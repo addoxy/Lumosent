@@ -1,4 +1,5 @@
 import '../styles/globals.css';
+import PageWrapper from '@/components/PageWrapper';
 import { cn } from '@/utils/utils';
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
@@ -19,11 +20,11 @@ export default function RootLayout({
     <html lang="en">
       <body
         className={cn(
-          'debug-screens flex min-h-screen w-full max-w-screen-xl flex-col bg-zinc-950 px-24 py-10 text-sm text-zinc-50 antialiased',
+          'debug-screens bg-zinc-950 text-sm text-zinc-50 antialiased',
           inter.className
         )}
       >
-        {children}
+        <PageWrapper>{children}</PageWrapper>
       </body>
     </html>
   );
