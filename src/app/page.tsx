@@ -1,7 +1,9 @@
+import DropdownMenu from '@/components/DropdownMenu';
+
 export default function Home() {
   return (
     <div>
-      <h1>Hello World</h1>
+      <DropdownMenu />
     </div>
   );
 }
