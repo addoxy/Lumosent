@@ -31,7 +31,10 @@ const Dropdown = () => {
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-52 border border-zinc-800 bg-zinc-950 font-medium">
+      <DropdownMenuContent
+        align="end"
+        className="w-52 border border-zinc-800 bg-zinc-950 font-medium"
+      >
         <DropdownMenuLabel className="mb-2 flex flex-col gap-y-1">
           <span>{name}</span>
           <span className="text-xs font-normal text-zinc-400">{email}</span>
