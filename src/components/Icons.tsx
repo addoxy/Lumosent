@@ -112,3 +112,78 @@ export const SignoutIcon = (props: IconProps) => {
     </svg>
   );
 };
+
+export const CheckIcon = (props: IconProps) => {
+  const { className } = props;
+
+  return (
+    <svg
+      className={cn('fill-current', className)}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1024 1024"
+    >
+      <path
+        fill="currentColor"
+        d="M512 0C229.232 0 0 229.232 0 512c0 282.784 229.232 512 512 512c282.784 0 512-229.216 512-512C1024 229.232 794.784 0 512 0m0 961.008c-247.024 0-448-201.984-448-449.01c0-247.024 200.976-448 448-448s448 200.977 448 448s-200.976 449.01-448 449.01m204.336-636.352L415.935 626.944l-135.28-135.28c-12.496-12.496-32.752-12.496-45.264 0c-12.496 12.496-12.496 32.752 0 45.248l158.384 158.4c12.496 12.48 32.752 12.48 45.264 0c1.44-1.44 2.673-3.009 3.793-4.64l318.784-320.753c12.48-12.496 12.48-32.752 0-45.263c-12.512-12.496-32.768-12.496-45.28 0"
+      ></path>
+    </svg>
+  );
+};
+
+export const FireIcon = (props: IconProps) => {
+  const { className } = props;
+
+  return (
+    <svg
+      className={cn('fill-current', className)}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill="currentColor"
+        d="M8 16c3.314 0 6-2 6-5.5c0-1.5-.5-4-2.5-6c.25 1.5-1.25 2-1.25 2C11 4 9 .5 6 0c.357 2 .5 4-2 6c-1.25 1-2 2.729-2 4.5C2 14 4.686 16 8 16m0-1c-1.657 0-3-1-3-2.75c0-.75.25-2 1.25-3C6.125 10 7 10.5 7 10.5c-.375-1.25.5-3.25 2-3.5c-.179 1-.25 2 1 3c.625.5 1 1.364 1 2.25C11 14 9.657 15 8 15"
+      ></path>
+    </svg>
+  );
+};
+
+export const GoldIcon = ({
+  className,
+  fill,
+}: {
+  className: string;
+  fill?: string;
+}) => {
+  return (
+    <svg
+      className={cn('fill-current', className)}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 32 32"
+    >
+      <g fill="none">
+        <circle cx={16} cy={16} r={16} fill={fill || '#f1b32b'}></circle>
+        <path
+          fill="#09090b"
+          d="M15.75 4C9.26 4 4 9.26 4 15.75S9.26 27.5 15.75 27.5S27.5 22.24 27.5 15.75A11.75 11.75 0 0 0 15.75 4m0 20.57a8.82 8.82 0 1 1 0-17.64a8.82 8.82 0 0 1 0 17.64m-2.93-8.81l2.94 4.4l2.92-4.4l-2.92-4.41z"
+        ></path>
+      </g>
+    </svg>
+  );
+};
+
+export const HeartIcon = (props: IconProps) => {
+  const { className } = props;
+
+  return (
+    <svg
+      className={cn('fill-current', className)}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        d="m12 21.35l-1.45-1.32C5.4 15.36 2 12.27 2 8.5C2 5.41 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.08C13.09 3.81 14.76 3 16.5 3C19.58 3 22 5.41 22 8.5c0 3.77-3.4 6.86-8.55 11.53z"
+      ></path>
+    </svg>
+  );
+};
