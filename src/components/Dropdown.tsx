@@ -26,7 +26,7 @@ const Dropdown = () => {
       <DropdownMenuTrigger>
         <Avatar className="size-8">
           <AvatarImage className="size-8 rounded-full" src={''} />
-          <AvatarFallback className="flex size-8 items-center justify-center rounded-full bg-blue-400 text-white">
+          <AvatarFallback className="flex size-8 items-center justify-center rounded-full bg-violet-800 font-medium text-zinc-50">
             {formatName(name)}
           </AvatarFallback>
         </Avatar>

@@ -1,4 +1,4 @@
-import Dropdown from './DropdownMenu';
+import Dropdown from './Dropdown';
 
 const Navbar = ({ title }: { title: string }) => {
   return (
