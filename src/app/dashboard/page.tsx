@@ -1,7 +1,7 @@
 'use client';
 
-import DashboardCard from '@/components/DashboardCard';
-import Graph from '@/components/Graph';
+import DashboardCard from './components/DashboardCard';
+import Graph from './components/Graph';
 import Navbar from '@/components/Navbar';
 import { Button } from '@/components/vendor/button';
 import {

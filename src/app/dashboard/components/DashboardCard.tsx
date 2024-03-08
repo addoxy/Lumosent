@@ -1,4 +1,9 @@
-import { CheckIcon, FireIcon, GoldIcon, HeartIcon } from './Icons';
+import {
+  CheckIcon,
+  FireIcon,
+  GoldIcon,
+  HeartIcon,
+} from '../../../components/Icons';
 import {
   Card,
   CardContent,
