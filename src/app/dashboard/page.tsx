@@ -1,4 +1,7 @@
+'use client';
+
 import DashboardCard from '@/components/DashboardCard';
+import { LineChartHero } from '@/components/Graph';
 import Navbar from '@/components/Navbar';
 
 const mockupCards = [
@@ -30,14 +33,15 @@ const mockupCards = [
 
 const page = () => {
   return (
-    <>
+    <div className="flex flex-col gap-y-6">
       <Navbar title="Dashboard" />
       <div className="grid grid-cols-4 gap-x-6">
         {mockupCards.map((card) => (
           <DashboardCard key={card.title} {...card} />
         ))}
       </div>
-    </>
+      <LineChartHero />
+    </div>
   );
 };
 
