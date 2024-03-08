@@ -53,7 +53,7 @@ const page = () => {
           </TableBody>
         </Table> */}
         {/* Column View */}
-        <div className="mx-auto flex w-1/3 flex-col gap-y-10">
+        {/* <div className="mx-auto flex w-1/3 flex-col gap-y-10">
           <HabitLine habit="Meditation" />
           <HabitLine habit="Meditation" />
           <HabitLine habit="Meditation" />
@@ -61,7 +61,7 @@ const page = () => {
           <HabitLine habit="Meditation" />
           <HabitLine habit="Meditation" />
           <HabitLine habit="Meditation" />
-        </div>
+        </div> */}
       </div>
     </>
   );

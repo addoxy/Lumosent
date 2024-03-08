@@ -1,3 +1,5 @@
+'use client';
+
 import {
   TrackerIcon,
   DashboardIcon,
@@ -15,19 +17,23 @@ import {
   DropdownMenuTrigger,
 } from '@/components/vendor/dropdown-menu';
 import { formatName } from '@/utils/utils';
+import { useSession } from 'next-auth/react';
+import { signOut } from 'next-auth/react';
 import Link from 'next/link';
 
 const Dropdown = () => {
-  const name = 'John Doe';
-  const email = 'johndoe@example.com';
+  const { data: session, status } = useSession();
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger>
         <Avatar className="size-8">
-          <AvatarImage className="size-8 rounded-full" src={''} />
+          <AvatarImage
+            className="size-8 rounded-full"
+            src={session?.user?.image || ''}
+          />
           <AvatarFallback className="flex size-8 items-center justify-center rounded-full bg-violet-800 font-medium text-zinc-50">
-            {formatName(name)}
+            {session?.user?.name && formatName(session?.user?.name)}
           </AvatarFallback>
         </Avatar>
       </DropdownMenuTrigger>
@@ -36,8 +42,10 @@ const Dropdown = () => {
         className="mt-1 w-52 border border-zinc-800 bg-zinc-900 font-medium"
       >
         <DropdownMenuLabel className="mb-2 flex flex-col gap-y-1">
-          <span>{name}</span>
-          <span className="text-xs font-normal text-zinc-400">{email}</span>
+          <span>{session?.user?.name}</span>
+          <span className="text-xs font-normal text-zinc-400">
+            {session?.user?.email}
+          </span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="-mx-2 bg-zinc-800" />
         <DropdownItem name="Tracker" href="/tracker" />
@@ -45,7 +53,10 @@ const Dropdown = () => {
         <DropdownItem name="Starter Kits" href="/starter-kits" />
         <DropdownItem name="Settings" href="/settings" />
         <DropdownMenuSeparator className="-mx-2 bg-zinc-800" />
-        <button className="flex h-9 w-full items-center gap-x-2 rounded-sm pl-2 text-left hover:bg-zinc-800">
+        <button
+          onClick={() => signOut()}
+          className="flex h-9 w-full items-center gap-x-2 rounded-sm pl-2 text-left hover:bg-zinc-800"
+        >
           <SignoutIcon className="size-3.5 text-zinc-50" />
           Sign out
         </button>
