@@ -27,13 +27,13 @@ const HabitCard = (props: GridViewProps) => {
         </div>
       </CardHeader>
       <CardContent className="flex justify-between">
-        <HabitMarker date={10} day="Mon" completed={true} />
-        <HabitMarker date={11} day="Tue" completed={false} />
-        <HabitMarker date={12} day="Wed" completed={true} />
-        <HabitMarker date={13} day="Thur" completed={true} />
-        <HabitMarker date={14} day="Fri" completed={false} />
-        <HabitMarker date={15} day="Sat" completed={false} />
-        <HabitMarker date={16} day="Sun" completed={true} />
+        <HabitMarker showDay={true} date={10} day="Mon" completed={true} />
+        <HabitMarker showDay={true} date={11} day="Tue" completed={false} />
+        <HabitMarker showDay={true} date={12} day="Wed" completed={true} />
+        <HabitMarker showDay={true} date={13} day="Thur" completed={true} />
+        <HabitMarker showDay={true} date={14} day="Fri" completed={false} />
+        <HabitMarker showDay={true} date={15} day="Sat" completed={false} />
+        <HabitMarker showDay={true} date={16} day="Sun" completed={true} />
       </CardContent>
     </Card>
   );
