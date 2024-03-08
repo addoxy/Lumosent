@@ -2,11 +2,10 @@ import { Button } from './vendor/button';
 import {
   Card,
   CardContent,
-  CardDescription,
-  CardFooter,
   CardHeader,
   CardTitle,
 } from '@/components/vendor/card';
+import { dataFormatter } from '@/utils/utils';
 import { AreaChart } from '@tremor/react';
 
 const chartdata = [
@@ -59,8 +58,6 @@ const chartdata = [
     'Habits Done': 100,
   },
 ];
-
-const dataFormatter = (number: number) => `${number}%`;
 
 export function LineChartHero() {
   return (

@@ -15,6 +15,4 @@ export const formatName = (name: string) => {
   return result;
 };
 
-export const formatCategories = (categories: string[]) => {
-  return categories.join(', ');
-};
+export const dataFormatter = (number: number) => `${number}%`;
