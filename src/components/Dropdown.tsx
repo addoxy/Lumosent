@@ -33,7 +33,7 @@ const Dropdown = () => {
       </DropdownMenuTrigger>
       <DropdownMenuContent
         align="end"
-        className="w-52 border border-zinc-800 bg-zinc-950 font-medium"
+        className="mt-1 w-52 border border-zinc-800 bg-zinc-900 font-medium"
       >
         <DropdownMenuLabel className="mb-2 flex flex-col gap-y-1">
           <span>{name}</span>
