@@ -99,12 +99,12 @@ const page = () => {
   return (
     <div className="flex flex-col gap-y-6">
       <Navbar title="Dashboard" />
-      <div className="grid grid-cols-4 gap-x-6">
+      <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
         {mockupCards.map((card) => (
           <DashboardCard key={card.title} {...card} />
         ))}
       </div>
-      <Card className="border-zinc-800 px-10 py-8">
+      <Card className="border-zinc-800 p-4 sm:px-10 sm:py-8">
         <CardHeader className="mb-11 justify-between">
           <div className="flex justify-between">
             <CardTitle className="text-xl">Overview</CardTitle>

@@ -13,7 +13,7 @@ const Graph = (props: ChartProps) => {
 
   return (
     <AreaChart
-      className="h-80 fill-tremor-brand-subtle text-tremor-content-subtle"
+      className="h-80 w-full fill-tremor-brand-subtle text-tremor-content-subtle"
       data={chartData}
       index="date"
       categories={['Habits Done']}
