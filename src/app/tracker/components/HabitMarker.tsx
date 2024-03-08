@@ -9,16 +9,17 @@ type DayToggleProps = {
   day: string;
   completed: boolean;
   showDay: boolean;
+  dayAlign?: 'top' | 'bottom';
 };
 
 // use optimistic updates
 const HabitMarker = (props: DayToggleProps) => {
-  const { date, day, showDay } = props;
+  const { date, day, showDay, dayAlign } = props;
   const [completed, setCompleted] = useState(props.completed);
 
   return (
     <div className={cn(showDay && 'flex flex-col items-center')}>
-      {showDay && (
+      {showDay && (dayAlign === 'top' || !dayAlign) && (
         <span className="mb-2.5 font-medium text-zinc-400">{day}</span>
       )}
       <Toggle
@@ -32,6 +33,9 @@ const HabitMarker = (props: DayToggleProps) => {
       >
         {date}
       </Toggle>
+      {showDay && dayAlign === 'bottom' && (
+        <span className="mt-2.5 font-medium text-zinc-400">{day}</span>
+      )}
     </div>
   );
 };
