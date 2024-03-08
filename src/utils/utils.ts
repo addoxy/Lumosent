@@ -15,4 +15,4 @@ export const formatName = (name: string) => {
   return result;
 };
 
-export const dataFormatter = (number: number) => `${number}%`;
+export const formatData = (number: number) => `${number}%`;

@@ -1,5 +1,5 @@
-import { dataFormatter } from '@/utils/utils';
-import { AreaChart } from '@tremor/react';
+import { formatData } from '@/utils/utils';
+import { AreaChart, CustomTooltipProps } from '@tremor/react';
 
 type ChartProps = {
   chartData: {
@@ -17,13 +17,30 @@ const Graph = (props: ChartProps) => {
       data={chartData}
       index="date"
       categories={['Habits Done']}
-      colors={['indigo', 'rose']}
-      valueFormatter={dataFormatter}
+      valueFormatter={formatData}
       yAxisWidth={60}
-      onValueChange={(v) => console.log(v)}
       showGridLines={false}
       curveType="natural"
+      customTooltip={CustomTooltip}
     />
+  );
+};
+
+const CustomTooltip = (customProps: CustomTooltipProps) => {
+  const { payload, active } = customProps;
+  if (!active || !payload) return null;
+
+  return (
+    <div className="tremor rounded-tremor-default border border-tremor-border bg-tremor-brand-emphasis shadow-tremor-dropdown">
+      {payload.map((category, idx) => (
+        <div key={idx} className="flex flex-col gap-y-1 px-3 py-2">
+          <p className="text-zinc-200">{category.dataKey}</p>
+          <p className="font-medium text-zinc-400">
+            {formatData(category.value as number)}
+          </p>
+        </div>
+      ))}
+    </div>
   );
 };
 

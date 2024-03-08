@@ -24,7 +24,7 @@ const config: Config = {
             muted: colors.zinc[200],
             subtle: colors.zinc[400],
             DEFAULT: colors.zinc[500],
-            emphasis: colors.zinc[700],
+            emphasis: colors.zinc[900],
             inverted: colors.white,
           },
           background: {
@@ -34,7 +34,7 @@ const config: Config = {
             emphasis: colors.zinc[700],
           },
           border: {
-            DEFAULT: colors.zinc[200],
+            DEFAULT: colors.zinc[800],
           },
           ring: {
             DEFAULT: colors.zinc[200],
