@@ -187,3 +187,20 @@ export const HeartIcon = (props: IconProps) => {
     </svg>
   );
 };
+
+export const ThreeDotsIcon = (props: IconProps) => {
+  const { className } = props;
+
+  return (
+    <svg
+      className={cn('fill-current', className)}
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 256 256"
+    >
+      <path
+        fill="currentColor"
+        d="M144 128a16 16 0 1 1-16-16a16 16 0 0 1 16 16m-84-16a16 16 0 1 0 16 16a16 16 0 0 0-16-16m136 0a16 16 0 1 0 16 16a16 16 0 0 0-16-16"
+      ></path>
+    </svg>
+  );
+};
