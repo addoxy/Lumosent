@@ -54,9 +54,16 @@ model User {
 }
 
 model Habit {
-  id          String     @id @default(cuid())
-  userId      String
-  habit       String
-  completedAt DateTime[] @db.Date
-  User        User       @relation(fields: [userId], references: [id])
+  id      String       @id @default(cuid())
+  userId  String
+  habit   String
+  User    User         @relation(fields: [userId], references: [id])
+  entries HabitEntry[]
+}
+
+model HabitEntry {
+  id          String   @id @default(cuid())
+  completedAt DateTime @default(now()) // Record the date/time of completion
+  habit       Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
+  habitId     String
 }
