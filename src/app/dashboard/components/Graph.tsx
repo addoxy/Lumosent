@@ -1,3 +1,5 @@
+'use client';
+
 import { formatData } from '@/utils/utils';
 import { AreaChart, CustomTooltipProps } from '@tremor/react';
 
