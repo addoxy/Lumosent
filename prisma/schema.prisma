@@ -51,7 +51,6 @@ model User {
   accounts      Account[]
   sessions      Session[]
   habits        Habit[]
-  userMetricId  String
 }
 
 model Habit {
