@@ -1,12 +1,12 @@
 import HabitCard from './HabitCard';
+import { Habit } from '@/lib/types';
 
-const GridView = () => {
+const GridView = ({ habits }: { habits: Habit[] }) => {
   return (
     <div className="grid grid-cols-2 gap-6">
-      <HabitCard habit="Meditation" />
-      <HabitCard habit="Meditation" />
-      <HabitCard habit="Meditation" />
-      <HabitCard habit="Meditation" />
+      {habits.map((habit) => (
+        <HabitCard key={habit.id} entries={habit.entries} habit={habit.label} />
+      ))}
     </div>
   );
 };

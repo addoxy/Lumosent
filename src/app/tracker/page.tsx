@@ -1,10 +1,17 @@
+import { getHabits } from '../actions/habits';
 import ColumnView from './components/ColumnView';
 import GridView from './components/GridView';
 import TableView from './components/TableView';
 import Navbar from '@/components/Navbar';
 import { Button } from '@/components/vendor/button';
+import { getDatesFromPastWeek } from '@/utils/utils';
 
-const page = () => {
+const page = async () => {
+  const habits = await getHabits();
+  const datesFromPastWeek = getDatesFromPastWeek();
+  console.log(datesFromPastWeek);
+  console.log(habits);
+
   return (
     <>
       <Navbar title="Tracker" />
@@ -17,12 +24,9 @@ const page = () => {
             + New Habit
           </Button>
         </div>
-        {/* grid view */}
-        <GridView />
-        {/* table view */}
-        {/* <TableView /> */}
-        {/* Column View */}
-        {/* <ColumnView /> */}
+        {/* {habits && habits.length > 0 && <GridView habits={habits} />} */}
+        {habits && habits.length > 0 && <TableView habits={habits} />}
+        {/* {habits && habits.length > 0 && <ColumnView habits={habits} />} */}
       </div>
     </>
   );

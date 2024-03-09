@@ -6,25 +6,32 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/vendor/table';
+import { Habit } from '@/lib/types';
+import { getDatesFromPastWeek, getDayFromDate } from '@/utils/utils';
 
-const TableView = () => {
+const TableView = ({ habits }: { habits: Habit[] }) => {
+  const datesFromPastWeek = getDatesFromPastWeek();
+
   return (
     <Table>
       <TableHeader className="text-zinc-400">
         <TableRow className="h-20 border-b-zinc-900">
           <TableHead className="w-2/5">Habits</TableHead>
-          <TableHead>Mon</TableHead>
-          <TableHead>Tue</TableHead>
-          <TableHead>Wed</TableHead>
-          <TableHead>Thur</TableHead>
-          <TableHead>Fri</TableHead>
-          <TableHead>Sat</TableHead>
-          <TableHead>Sun</TableHead>
+          {datesFromPastWeek.map((date) => (
+            <TableHead key={date} className="text-center">
+              {getDayFromDate(date)}
+            </TableHead>
+          ))}
         </TableRow>
       </TableHeader>
       <TableBody>
-        <HabitRow habit="Meditation" />
-        <HabitRow habit="Meditation" />
+        {habits.map((habit) => (
+          <HabitRow
+            key={habit.id}
+            entries={habit.entries}
+            habit={habit.label}
+          />
+        ))}
       </TableBody>
     </Table>
   );

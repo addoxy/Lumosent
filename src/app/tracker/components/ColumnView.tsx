@@ -1,15 +1,12 @@
 import HabitLine from './HabitLine';
+import { Habit } from '@/lib/types';
 
-const ColumnView = () => {
+const ColumnView = ({ habits }: { habits: Habit[] }) => {
   return (
     <div className="mx-auto flex w-1/3 flex-col gap-y-10">
-      <HabitLine habit="Meditation" />
-      <HabitLine habit="Meditation" />
-      <HabitLine habit="Meditation" />
-      <HabitLine habit="Meditation" />
-      <HabitLine habit="Meditation" />
-      <HabitLine habit="Meditation" />
-      <HabitLine habit="Meditation" />
+      {habits.map((habit) => (
+        <HabitLine key={habit.id} entries={habit.entries} habit={habit.label} />
+      ))}
     </div>
   );
 };

@@ -6,13 +6,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/vendor/card';
+import { HabitProps } from '@/lib/types';
+import { dateToString, getDatesFromPastWeek } from '@/utils/utils';
 
-type GridViewProps = {
-  habit: string;
-};
-
-const HabitCard = (props: GridViewProps) => {
-  const { habit } = props;
+const HabitCard = (props: HabitProps) => {
+  const { habit, entries } = props;
+  const datesFromPastWeek = getDatesFromPastWeek();
 
   return (
     <Card className="flex flex-col border-zinc-800 bg-zinc-950 px-8 pb-8 pt-7">
@@ -27,13 +26,18 @@ const HabitCard = (props: GridViewProps) => {
         </div>
       </CardHeader>
       <CardContent className="flex justify-between">
-        <HabitMarker showDay={true} date={10} day="Mon" completed={true} />
-        <HabitMarker showDay={true} date={11} day="Tue" completed={false} />
-        <HabitMarker showDay={true} date={12} day="Wed" completed={true} />
-        <HabitMarker showDay={true} date={13} day="Thur" completed={true} />
-        <HabitMarker showDay={true} date={14} day="Fri" completed={false} />
-        <HabitMarker showDay={true} date={15} day="Sat" completed={false} />
-        <HabitMarker showDay={true} date={16} day="Sun" completed={true} />
+        {datesFromPastWeek.map((date, i) => (
+          <HabitMarker
+            date={date}
+            key={i}
+            completed={
+              !!entries.find(
+                (entry) => dateToString(entry.completedAt) === date
+              )
+            }
+            showDay={true}
+          />
+        ))}
       </CardContent>
     </Card>
   );

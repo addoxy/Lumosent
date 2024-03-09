@@ -1,12 +1,11 @@
 import HabitMarker from './HabitMarker';
 import { ThreeDotsIcon } from '@/components/Icons';
+import { HabitProps } from '@/lib/types';
+import { dateToString, getDatesFromPastWeek } from '@/utils/utils';
 
-type HabitLineProps = {
-  habit: string;
-};
-
-const HabitLine = (props: HabitLineProps) => {
-  const { habit } = props;
+const HabitLine = (props: HabitProps) => {
+  const { habit, entries } = props;
+  const datesFromPastWeek = getDatesFromPastWeek();
 
   return (
     <div className="flex flex-col">
@@ -17,55 +16,19 @@ const HabitLine = (props: HabitLineProps) => {
         </button>
       </div>
       <div className="flex justify-between">
-        <HabitMarker
-          showDay={true}
-          dayAlign="bottom"
-          date={10}
-          day="M"
-          completed={false}
-        />
-        <HabitMarker
-          showDay={true}
-          dayAlign="bottom"
-          date={10}
-          day="M"
-          completed={false}
-        />
-        <HabitMarker
-          showDay={true}
-          dayAlign="bottom"
-          date={10}
-          day="M"
-          completed={false}
-        />
-        <HabitMarker
-          showDay={true}
-          dayAlign="bottom"
-          date={10}
-          day="M"
-          completed={false}
-        />
-        <HabitMarker
-          showDay={true}
-          dayAlign="bottom"
-          date={10}
-          day="M"
-          completed={false}
-        />
-        <HabitMarker
-          showDay={true}
-          dayAlign="bottom"
-          date={10}
-          day="M"
-          completed={false}
-        />
-        <HabitMarker
-          showDay={true}
-          dayAlign="bottom"
-          date={10}
-          day="M"
-          completed={false}
-        />
+        {datesFromPastWeek.map((date, i) => (
+          <HabitMarker
+            date={date}
+            key={i}
+            completed={
+              !!entries.find(
+                (entry) => dateToString(entry.completedAt) === date
+              )
+            }
+            showDay={true}
+            dayAlign="bottom"
+          />
+        ))}
       </div>
     </div>
   );

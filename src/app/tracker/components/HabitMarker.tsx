@@ -1,40 +1,41 @@
 'use client';
 
 import { Toggle } from '@/components/vendor/toggle';
-import { cn } from '@/utils/utils';
-import { useState } from 'react';
+import { cn, formatDate } from '@/utils/utils';
+import { getDayFromDate } from '@/utils/utils';
 
 type DayToggleProps = {
-  date: number;
-  day: string;
-  completed: boolean;
+  date: string;
   showDay: boolean;
+  completed: boolean;
   dayAlign?: 'top' | 'bottom';
 };
 
 // use optimistic updates
 const HabitMarker = (props: DayToggleProps) => {
-  const { date, day, showDay, dayAlign } = props;
-  const [completed, setCompleted] = useState(props.completed);
+  const { date, showDay, dayAlign, completed } = props;
 
   return (
     <div className={cn(showDay && 'flex flex-col items-center')}>
       {showDay && (dayAlign === 'top' || !dayAlign) && (
-        <span className="mb-2.5 font-medium text-zinc-400">{day}</span>
+        <span className="mb-2.5 font-medium text-zinc-400">
+          {getDayFromDate(date)}
+        </span>
       )}
       <Toggle
         pressed={completed}
-        onPressedChange={setCompleted}
         className={cn(
           'size-10 rounded-full font-medium',
-          !completed && 'bg-zinc-700 text-zinc-300',
-          completed && 'bg-green-500 text-zinc-800'
+          completed && 'bg-green-500 font-semibold text-zinc-800',
+          !completed && 'bg-zinc-800 text-zinc-200'
         )}
       >
-        {date}
+        {formatDate(date, true)}
       </Toggle>
       {showDay && dayAlign === 'bottom' && (
-        <span className="mt-2.5 font-medium text-zinc-400">{day}</span>
+        <span className="mt-2.5 font-medium text-zinc-400">
+          {getDayFromDate(date)[0]}
+        </span>
       )}
     </div>
   );
