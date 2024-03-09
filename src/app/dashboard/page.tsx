@@ -2,19 +2,12 @@ import DashboardCard from './components/DashboardCard';
 import Graph from './components/Graph';
 import GraphMenu from './components/GraphMenu';
 import Navbar from '@/components/Navbar';
-import { Button } from '@/components/vendor/button';
 import {
   Card,
   CardContent,
   CardHeader,
   CardTitle,
 } from '@/components/vendor/card';
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuTrigger,
-} from '@/components/vendor/dropdown-menu';
 
 const mockupCards = [
   {
