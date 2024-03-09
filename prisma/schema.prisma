@@ -34,6 +34,14 @@ model Session {
   user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
 }
 
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
+
 model User {
   id            String    @id @default(cuid())
   name          String?
@@ -42,12 +50,14 @@ model User {
   image         String?
   accounts      Account[]
   sessions      Session[]
+  habits        Habit[]
+  userMetricId  String
 }
 
-model VerificationToken {
-  identifier String
-  token      String   @unique
-  expires    DateTime
-
-  @@unique([identifier, token])
+model Habit {
+  id          String     @id @default(cuid())
+  userId      String
+  habit       String
+  completedAt DateTime[] @db.Date
+  User        User       @relation(fields: [userId], references: [id])
 }
