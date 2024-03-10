@@ -54,13 +54,11 @@ model User {
 }
 
 model Habit {
-  id           String       @id @default(cuid())
-  userId       String
-  label        String
-  User         User         @relation(fields: [userId], references: [id])
-  entries      HabitEntry[]
-  StarterKit   StarterKit?  @relation(fields: [starterKitId], references: [id])
-  starterKitId String?
+  id      String       @id @default(cuid())
+  userId  String
+  label   String
+  User    User         @relation(fields: [userId], references: [id])
+  entries HabitEntry[]
 }
 
 model HabitEntry {
@@ -71,8 +69,8 @@ model HabitEntry {
 }
 
 model StarterKit {
-  id          String  @id @default(cuid())
+  id          String   @id @default(cuid())
   name        String
   description String?
-  habits      Habit[]
+  habits      String[]
 }
