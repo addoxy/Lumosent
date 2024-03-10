@@ -54,11 +54,13 @@ model User {
 }
 
 model Habit {
-  id      String       @id @default(cuid())
-  userId  String
-  label   String
-  User    User         @relation(fields: [userId], references: [id])
-  entries HabitEntry[]
+  id           String       @id @default(cuid())
+  userId       String
+  label        String
+  User         User         @relation(fields: [userId], references: [id])
+  entries      HabitEntry[]
+  StarterKit   StarterKit?  @relation(fields: [starterKitId], references: [id])
+  starterKitId String?
 }
 
 model HabitEntry {
@@ -66,4 +68,11 @@ model HabitEntry {
   completedAt DateTime @default(now()) @db.Date // Record the date/time of completion
   habit       Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
   habitId     String
+}
+
+model StarterKit {
+  id          String  @id @default(cuid())
+  name        String
+  description String?
+  habits      Habit[]
 }
