@@ -63,7 +63,7 @@ model Habit {
 
 model HabitEntry {
   id          String   @id @default(cuid())
-  completedAt DateTime @default(now()) // Record the date/time of completion
+  completedAt DateTime @default(now()) @db.Date // Record the date/time of completion
   habit       Habit    @relation(fields: [habitId], references: [id], onDelete: Cascade)
   habitId     String
 }

@@ -44,6 +44,7 @@ const HabitCard = (props: HabitProps) => {
               )
             }
             showDay={true}
+            habitId={habit.id}
           />
         ))}
       </CardContent>
