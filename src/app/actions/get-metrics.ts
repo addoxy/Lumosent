@@ -3,7 +3,7 @@
 import { prisma } from '@/lib/prisma';
 import { ServerResponse, getUser } from '@/utils/server';
 import { formatDayStats, getDaysCount, getLongestStreak } from '@/utils/utils';
-import { sub } from 'date-fns';
+import { endOfDay, format, parseISO, startOfDay, sub } from 'date-fns';
 
 export const getTotalLogs = async () => {
   const user = await getUser();
@@ -28,33 +28,22 @@ export const getTotalLogs = async () => {
   }
 };
 
-export const getPerfectDays = async () => {
+export const getTodaysHabitCount = async () => {
+  const today = format(new Date(), "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
   const user = await getUser();
 
   if (!user) {
     return null;
   }
 
-  try {
-    const distinctDates = await prisma.habitEntry.groupBy({
-      by: ['completedAt'],
-      where: { habit: { userId: user.id } },
-      _count: { completedAt: true },
-      having: {
-        completedAt: {
-          _count: {
-            gte: await prisma.habit.count({ where: { userId: user.id } }),
-          },
-        },
-      },
-    });
+  const count = await prisma.habitEntry.count({
+    where: {
+      habit: { userId: user.id }, // Filter by the user
+      completedAt: today,
+    },
+  });
 
-    const completedDaysCount = getDaysCount(distinctDates);
-    return completedDaysCount;
-  } catch (err) {
-    ServerResponse('Server error', 500);
-    return null;
-  }
+  return count;
 };
 
 export const getUserLongestStreak = async () => {

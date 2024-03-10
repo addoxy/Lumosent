@@ -1,9 +1,9 @@
 import {
   getFavoriteHabit,
   getGraphStats,
-  getPerfectDays,
   getTotalLogs,
   getUserLongestStreak,
+  getTodaysHabitCount,
 } from '../actions/get-metrics';
 import DashboardCard from './components/DashboardCard';
 import Graph from './components/Graph';
@@ -16,7 +16,7 @@ import {
 
 const page = async () => {
   const totalLogs = await getTotalLogs();
-  const perfectDays = await getPerfectDays();
+  const todaysHabitCount = await getTodaysHabitCount();
   const longestStreak = await getUserLongestStreak();
   const favoriteHabit = await getFavoriteHabit();
   const graphStats = await getGraphStats();
@@ -31,10 +31,10 @@ const page = async () => {
           title="Total habits logged"
         />
         <DashboardCard
-          data={(perfectDays && perfectDays.toString()) || '0'}
-          footer="All time"
+          data={(todaysHabitCount && todaysHabitCount.toString()) || '0'}
+          footer="Today"
           icon="fire"
-          title="Perfect Days"
+          title="Habits logged today"
         />
         <DashboardCard
           data={(longestStreak && longestStreak.toString()) || '0'}
