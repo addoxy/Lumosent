@@ -4,11 +4,11 @@ import { prisma } from '@/lib/prisma';
 import { ServerResponse, getUser } from '@/utils/server';
 import { revalidatePath } from 'next/cache';
 
-export const postHabit = async (label: string) => {
+export const createHabit = async (label: string) => {
   const user = await getUser();
 
   if (!user) {
-    return null;
+    return { error: 'Something went wrong!' };
   }
 
   try {
@@ -20,7 +20,9 @@ export const postHabit = async (label: string) => {
     });
   } catch (err) {
     ServerResponse('Server error', 500);
+    return { error: 'Something went wrong!' };
   }
 
   revalidatePath('/tracker');
+  return { success: 'Successfully created habit!' };
 };
