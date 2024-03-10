@@ -37,7 +37,7 @@ export const authOptions: NextAuthOptions = {
       return baseUrl + '/tracker';
     },
   },
-  // pages: {
-  //   signIn: '/sign-in',
-  // },
+  pages: {
+    signIn: '/sign-in',
+  },
 };

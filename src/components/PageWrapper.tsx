@@ -5,6 +5,8 @@ import Providers from '@/utils/providers';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 
+const EXCLUDED_PATHS = ['/', '/sign-in'];
+
 const PageWrapper = ({ children }: { children: ReactNode }) => {
   const pathname = usePathname();
   let currentPath = '';
@@ -22,7 +24,7 @@ const PageWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <Providers>
       <main className="mx-auto flex min-h-screen w-full max-w-screen-2xl flex-col px-4 py-10 sm:px-10 lg:px-16 xl:px-24">
-        <Navbar title={currentPath} />
+        {!EXCLUDED_PATHS.includes(pathname) && <Navbar title={currentPath} />}
         {children}
       </main>
     </Providers>
