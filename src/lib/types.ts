@@ -12,6 +12,5 @@ export type Entry = {
 };
 
 export type HabitProps = {
-  habit: string;
-  entries: Entry[];
+  habit: Habit;
 };
