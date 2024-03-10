@@ -1,3 +1,5 @@
+'use client';
+
 import HabitMarker from './HabitMarker';
 import { ThreeDotsIcon } from '@/components/Icons';
 import {
@@ -8,19 +10,22 @@ import {
   TableRow,
   TableCell,
 } from '@/components/vendor/table';
+import { useView } from '@/lib/hooks/use-view';
 import { Habit } from '@/lib/types';
 import { HabitProps } from '@/lib/types';
 import {
   getDatesFromPastWeek,
   getDayFromDate,
   dateToString,
+  cn,
 } from '@/utils/utils';
 
 const TableView = ({ habits }: { habits: Habit[] }) => {
+  const { view } = useView();
   const datesFromPastWeek = getDatesFromPastWeek();
 
   return (
-    <Table>
+    <Table className={cn(view !== 'table' && 'hidden')}>
       <TableHeader className="text-zinc-400">
         <TableRow className="h-20 border-b-zinc-900">
           <TableHead className="w-2/5">Habits</TableHead>
@@ -33,11 +38,7 @@ const TableView = ({ habits }: { habits: Habit[] }) => {
       </TableHeader>
       <TableBody>
         {habits.map((habit) => (
-          <HabitRow
-            key={habit.id}
-            entries={habit.entries}
-            habit={habit.label}
-          />
+          <HabitRow key={habit.id} habit={habit} />
         ))}
       </TableBody>
     </Table>
@@ -45,22 +46,23 @@ const TableView = ({ habits }: { habits: Habit[] }) => {
 };
 
 const HabitRow = (props: HabitProps) => {
-  const { habit, entries } = props;
+  const { habit } = props;
   const datesFromPastWeek = getDatesFromPastWeek();
 
   return (
     <TableRow className="h-24 border-b-zinc-900">
-      <TableCell className="text-zinc-200">{habit}</TableCell>
+      <TableCell className="text-zinc-200">{habit.label}</TableCell>
       {datesFromPastWeek.map((date, i) => (
         <TableCell key={i} className="text-center">
           <HabitMarker
             date={date}
             completed={
-              !!entries.find(
+              !!habit.entries.find(
                 (entry) => dateToString(entry.completedAt) === date
               )
             }
             showDay={false}
+            habitId={habit.id}
           />
         </TableCell>
       ))}

@@ -1,7 +1,13 @@
+'use client';
+
 import { Switch } from '@/components/vendor/switch';
 import { Toggle } from '@/components/vendor/toggle';
+import { useView } from '@/lib/hooks/use-view';
+import { cn } from '@/utils/utils';
 
-const page = () => {
+const SettingsPage = () => {
+  const { view, setView } = useView();
+
   return (
     <div className="mx-auto flex flex-col">
       <section>
@@ -12,7 +18,14 @@ const page = () => {
         <div className="flex gap-x-6">
           <div className="flex flex-col">
             <h3 className="mb-2 font-medium text-zinc-400">Table</h3>
-            <Toggle className="size-40 rounded-md bg-zinc-800 p-1.5">
+            <Toggle
+              pressed={view === 'table'}
+              onPressedChange={() => setView('table')}
+              className={cn(
+                'size-40 rounded-md bg-zinc-800 p-1.5',
+                view === 'table' && 'border border-zinc-200'
+              )}
+            >
               <div className="flex h-full w-full flex-col items-center justify-center rounded-md bg-zinc-950">
                 <TableView />
               </div>
@@ -20,7 +33,14 @@ const page = () => {
           </div>
           <div className="flex flex-col">
             <h3 className="mb-2 font-medium text-zinc-400">Grid</h3>
-            <Toggle className="size-40 rounded-md bg-zinc-800 p-1.5">
+            <Toggle
+              pressed={view === 'grid'}
+              onPressedChange={() => setView('grid')}
+              className={cn(
+                'size-40 rounded-md bg-zinc-800 p-1.5',
+                view === 'grid' && 'border border-zinc-200'
+              )}
+            >
               <div className="flex h-full w-full flex-col rounded-md bg-zinc-950">
                 <div className="grid grid-cols-2 gap-1 p-2">
                   <GridPreview />
@@ -33,7 +53,14 @@ const page = () => {
           </div>
           <div>
             <h3 className="mb-2 font-medium text-zinc-400">Mobile</h3>
-            <Toggle className="size-40 rounded-md bg-zinc-800 p-1.5">
+            <Toggle
+              pressed={view === 'mobile'}
+              onPressedChange={() => setView('mobile')}
+              className={cn(
+                'size-40 rounded-md bg-zinc-800 p-1.5',
+                view === 'mobile' && 'border border-zinc-200'
+              )}
+            >
               <div className="flex h-full w-full flex-col items-center justify-center rounded-md bg-zinc-950">
                 <MobileView />
               </div>
@@ -113,4 +140,4 @@ const MobileView = () => {
   );
 };
 
-export default page;
+export default SettingsPage;

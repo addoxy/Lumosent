@@ -13,8 +13,8 @@ const page = async () => {
         <NewHabit />
       </div>
       {habits && habits.length > 0 && <GridView habits={habits} />}
-      {/* {habits && habits.length > 0 && <TableView habits={habits} />} */}
-      {/* {habits && habits.length > 0 && <ColumnView habits={habits} />} */}
+      {habits && habits.length > 0 && <TableView habits={habits} />}
+      {habits && habits.length > 0 && <ColumnView habits={habits} />}
     </div>
   );
 };

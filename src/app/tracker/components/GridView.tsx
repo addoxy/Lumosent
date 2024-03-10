@@ -1,3 +1,5 @@
+'use client';
+
 import HabitDropdown from './HabitDropdown';
 import HabitMarker from './HabitMarker';
 import {
@@ -6,8 +8,9 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/vendor/card';
+import { useView } from '@/lib/hooks/use-view';
 import { Habit, HabitProps } from '@/lib/types';
-import { dateToString, getDatesFromPastWeek } from '@/utils/utils';
+import { cn, dateToString, getDatesFromPastWeek } from '@/utils/utils';
 
 const GridView = ({ habits }: { habits: Habit[] }) => {
   return (
@@ -21,10 +24,16 @@ const GridView = ({ habits }: { habits: Habit[] }) => {
 
 const HabitCard = (props: HabitProps) => {
   const { habit } = props;
+  const { view } = useView();
   const datesFromPastWeek = getDatesFromPastWeek();
 
   return (
-    <Card className="flex flex-col border-zinc-800 bg-zinc-950 px-8 pb-8 pt-7">
+    <Card
+      className={cn(
+        'flex flex-col border-zinc-800 bg-zinc-950 px-8 pb-8 pt-7',
+        view !== 'grid' && 'hidden'
+      )}
+    >
       <CardHeader className="mb-6">
         <div className="flex items-center justify-between">
           <CardTitle className="text-base font-medium text-zinc-100">
