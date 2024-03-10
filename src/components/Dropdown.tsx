@@ -64,7 +64,7 @@ const Dropdown = () => {
         <DropdownItem setIsOpen={setIsOpen} name="Settings" href="/settings" />
         <DropdownMenuSeparator className="-mx-2 bg-zinc-800" />
         <button
-          onClick={() => signOut()}
+          onClick={() => signOut({ callbackUrl: '/signout' })}
           className="flex h-9 w-full items-center gap-x-2 rounded-sm pl-2 text-left hover:bg-zinc-800"
         >
           <SignoutIcon className="size-3.5 text-zinc-50" />
