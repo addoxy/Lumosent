@@ -30,7 +30,7 @@ const HabitCard = (props: HabitProps) => {
           <CardTitle className="text-base font-medium text-zinc-100">
             {habit.label}
           </CardTitle>
-          <HabitDropdown habitId={habit.id} />
+          <HabitDropdown habit={habit} />
         </div>
       </CardHeader>
       <CardContent className="flex justify-between">

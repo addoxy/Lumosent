@@ -1,6 +1,7 @@
 'use client';
 
 import DeleteHabit from './DeleteHabit';
+import RenameHabit from './RenameHabit';
 import { ThreeDotsIcon } from '@/components/Icons';
 import {
   DropdownMenu,
@@ -8,8 +9,9 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/vendor/dropdown-menu';
+import { Habit } from '@/lib/types';
 
-const HabitDropdown = ({ habitId }: { habitId: string }) => {
+const HabitDropdown = ({ habit }: { habit: Habit }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="rounded-md p-0.5 hover:bg-zinc-900">
@@ -19,14 +21,17 @@ const HabitDropdown = ({ habitId }: { habitId: string }) => {
         align="end"
         className="mt-1 w-20 border border-zinc-800 bg-zinc-900 font-medium"
       >
-        <DropdownMenuItem className="h-9 cursor-pointer hover:bg-zinc-800">
-          Rename
+        <DropdownMenuItem
+          onClick={(e) => e.preventDefault()}
+          className="h-9 cursor-pointer hover:bg-zinc-800"
+        >
+          <RenameHabit habitId={habit.id} prevName={habit.label} />
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={(e) => e.preventDefault()}
           className="h-9 cursor-pointer hover:bg-zinc-800"
         >
-          <DeleteHabit habitId={habitId} />
+          <DeleteHabit habitId={habit.id} />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
