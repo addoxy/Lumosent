@@ -1,5 +1,6 @@
 'use client';
 
+import HabitDropdown from './HabitDropdown';
 import HabitMarker from './HabitMarker';
 import { ThreeDotsIcon } from '@/components/Icons';
 import { useView } from '@/lib/hooks/use-view';
@@ -32,9 +33,7 @@ const HabitLine = (props: HabitProps) => {
     <div className="flex flex-col">
       <div className="mb-6 flex justify-between">
         <h3 className="text-base text-zinc-200">{habit.label}</h3>
-        <button className="rounded-md p-1 hover:bg-zinc-800">
-          <ThreeDotsIcon className="size-4 text-zinc-400" />
-        </button>
+        <HabitDropdown habit={habit} />
       </div>
       <div className="flex justify-between">
         {datesFromPastWeek.map((date, i) => (

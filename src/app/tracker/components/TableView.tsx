@@ -1,5 +1,6 @@
 'use client';
 
+import HabitDropdown from './HabitDropdown';
 import HabitMarker from './HabitMarker';
 import { ThreeDotsIcon } from '@/components/Icons';
 import {
@@ -67,9 +68,7 @@ const HabitRow = (props: HabitProps) => {
         </TableCell>
       ))}
       <TableCell>
-        <button className="rounded-md p-1 hover:bg-zinc-800">
-          <ThreeDotsIcon className="size-4 text-zinc-400" />
-        </button>
+        <HabitDropdown habit={habit} />
       </TableCell>
     </TableRow>
   );
