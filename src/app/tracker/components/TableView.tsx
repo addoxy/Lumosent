@@ -2,23 +2,21 @@
 
 import HabitDropdown from './HabitDropdown';
 import HabitMarker from './HabitMarker';
-import { ThreeDotsIcon } from '@/components/Icons';
 import {
   Table,
   TableBody,
+  TableCell,
   TableHead,
   TableHeader,
   TableRow,
-  TableCell,
 } from '@/components/vendor/table';
 import { useView } from '@/lib/hooks/use-view';
-import { Habit } from '@/lib/types';
-import { HabitProps } from '@/lib/types';
+import { Habit, HabitProps } from '@/lib/types';
 import {
+  cn,
+  dateToString,
   getDatesFromPastWeek,
   getDayFromDate,
-  dateToString,
-  cn,
 } from '@/utils/utils';
 
 const TableView = ({ habits }: { habits: Habit[] }) => {

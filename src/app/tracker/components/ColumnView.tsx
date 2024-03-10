@@ -2,10 +2,8 @@
 
 import HabitDropdown from './HabitDropdown';
 import HabitMarker from './HabitMarker';
-import { ThreeDotsIcon } from '@/components/Icons';
 import { useView } from '@/lib/hooks/use-view';
-import { Habit } from '@/lib/types';
-import { HabitProps } from '@/lib/types';
+import { Habit, HabitProps } from '@/lib/types';
 import { cn, dateToString, getDatesFromPastWeek } from '@/utils/utils';
 
 const ColumnView = ({ habits }: { habits: Habit[] }) => {
