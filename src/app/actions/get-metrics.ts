@@ -2,7 +2,8 @@
 
 import { prisma } from '@/lib/prisma';
 import { ServerResponse, getUser } from '@/utils/server';
-import { getDaysCount, getLongestStreak } from '@/utils/utils';
+import { formatDayStats, getDaysCount, getLongestStreak } from '@/utils/utils';
+import { sub } from 'date-fns';
 
 export const getTotalLogs = async () => {
   const user = await getUser();
@@ -64,6 +65,7 @@ export const getUserLongestStreak = async () => {
     orderBy: { completedAt: 'desc' },
     _max: { completedAt: true },
   });
+
   // Get the most recent completion date per habit
   const longestStreak = await getLongestStreak(entriesByHabit);
   return longestStreak;
@@ -97,4 +99,30 @@ export const getFavoriteHabit = async () => {
   });
 
   return habit;
+};
+
+export const getGraphStats = async (daysBack = 7) => {
+  const user = await getUser();
+
+  if (!user) {
+    return null;
+  }
+
+  const startDate = sub(new Date(), { days: daysBack });
+
+  const dailyCounts = await prisma.habitEntry.groupBy({
+    by: ['completedAt'],
+    where: {
+      completedAt: { gte: startDate },
+      habit: { userId: user.id },
+    },
+    _count: { habitId: true },
+  });
+
+  const totalHabitCount = await prisma.habit.count({
+    where: { userId: user.id },
+  });
+
+  const results = formatDayStats(dailyCounts, totalHabitCount);
+  return results;
 };

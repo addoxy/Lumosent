@@ -115,3 +115,25 @@ export const getLongestStreak = async (
 
   return longestStreak;
 };
+
+export const formatDayStats = (
+  dailyCounts: (Prisma.PickEnumerable<
+    Prisma.HabitEntryGroupByOutputType,
+    'completedAt'[]
+  > & {
+    _count: {
+      habitId: number;
+    };
+  })[],
+  totalHabitCount: number
+) => {
+  const results = dailyCounts.map((day) => {
+    const completionPercentage = (day._count.habitId / totalHabitCount) * 100;
+    return {
+      date: format(day.completedAt, 'dd'),
+      'Habits Done': completionPercentage, // Round if needed
+    };
+  });
+
+  return results;
+};
