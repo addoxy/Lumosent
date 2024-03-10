@@ -22,7 +22,7 @@ const Graph = (props: ChartProps) => {
       valueFormatter={formatData}
       yAxisWidth={60}
       showGridLines={false}
-      curveType="natural"
+      curveType="monotone"
       customTooltip={CustomTooltip}
     />
   );

@@ -116,6 +116,14 @@ export const getLongestStreak = async (
   return longestStreak;
 };
 
+export const generateDateList = (startDate: Date, daysBack: number) => {
+  const dates = [];
+  for (let i = 0; i < daysBack; i++) {
+    dates.push(sub(startDate, { days: i }));
+  }
+  return dates;
+};
+
 export const formatDayStats = (
   dailyCounts: (Prisma.PickEnumerable<
     Prisma.HabitEntryGroupByOutputType,
@@ -127,13 +135,24 @@ export const formatDayStats = (
   })[],
   totalHabitCount: number
 ) => {
-  const results = dailyCounts.map((day) => {
-    const completionPercentage = (day._count.habitId / totalHabitCount) * 100;
+  const expectedDates = generateDateList(new Date(), 7);
+
+  const results = expectedDates.map((expectedDate) => {
+    const formattedDate = format(expectedDate, 'yyyy-MM-dd');
+    const matchingCount = dailyCounts.find(
+      (day) => format(day.completedAt, 'yyyy-MM-dd') === formattedDate
+    );
+
+    const count = matchingCount ? matchingCount._count.habitId : 0;
+    const completionPercentage = (count / totalHabitCount) * 100;
+
     return {
-      date: format(day.completedAt, 'dd'),
-      'Habits Done': completionPercentage, // Round if needed
+      date: format(expectedDate, 'dd'),
+      'Habits Done': completionPercentage,
     };
   });
+
+  results.reverse();
 
   return results;
 };
