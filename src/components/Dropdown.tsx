@@ -20,12 +20,14 @@ import { formatName } from '@/utils/utils';
 import { useSession } from 'next-auth/react';
 import { signOut } from 'next-auth/react';
 import Link from 'next/link';
+import { useState } from 'react';
 
 const Dropdown = () => {
   const { data: session, status } = useSession();
+  const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <DropdownMenu>
+    <DropdownMenu open={isOpen} onOpenChange={setIsOpen}>
       <DropdownMenuTrigger>
         <Avatar className="size-8">
           <AvatarImage
@@ -48,10 +50,18 @@ const Dropdown = () => {
           </span>
         </DropdownMenuLabel>
         <DropdownMenuSeparator className="-mx-2 bg-zinc-800" />
-        <DropdownItem name="Tracker" href="/tracker" />
-        <DropdownItem name="Dashboard" href="/dashboard" />
-        <DropdownItem name="Starter Kits" href="/starter-kits" />
-        <DropdownItem name="Settings" href="/settings" />
+        <DropdownItem setIsOpen={setIsOpen} name="Tracker" href="/tracker" />
+        <DropdownItem
+          setIsOpen={setIsOpen}
+          name="Dashboard"
+          href="/dashboard"
+        />
+        <DropdownItem
+          setIsOpen={setIsOpen}
+          name="Starter Kits"
+          href="/starter-kits"
+        />
+        <DropdownItem setIsOpen={setIsOpen} name="Settings" href="/settings" />
         <DropdownMenuSeparator className="-mx-2 bg-zinc-800" />
         <button
           onClick={() => signOut()}
@@ -68,13 +78,17 @@ const Dropdown = () => {
 type DropdownItemProps = {
   name: string;
   href: string;
+  setIsOpen: (value: boolean) => void;
 };
 
 const DropdownItem = (props: DropdownItemProps) => {
-  const { name, href } = props;
+  const { name, href, setIsOpen } = props;
 
   return (
-    <DropdownMenuItem className="h-9 hover:bg-zinc-800">
+    <DropdownMenuItem
+      onClick={() => setIsOpen(false)}
+      className="h-9 hover:bg-zinc-800"
+    >
       <Link href={href} className="flex h-full w-full items-center gap-x-2">
         {name === 'Tracker' && (
           <TrackerIcon className="size-3.5 text-zinc-50" />

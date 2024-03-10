@@ -7,7 +7,6 @@ import {
 } from '../actions/get-metrics';
 import DashboardCard from './components/DashboardCard';
 import Graph from './components/Graph';
-import Navbar from '@/components/Navbar';
 import {
   Card,
   CardContent,
@@ -24,7 +23,6 @@ const page = async () => {
 
   return (
     <div className="flex flex-col gap-y-6">
-      <Navbar title="Dashboard" />
       <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
         <DashboardCard
           data={(totalLogs && totalLogs.toString()) || '0'}
