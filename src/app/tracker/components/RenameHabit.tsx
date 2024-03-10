@@ -38,9 +38,7 @@ const RenameHabit = (props: RenameHabitProps) => {
 
   return (
     <Dialog>
-      <DialogTrigger className="h-full w-full text-left">
-        Rename Habit
-      </DialogTrigger>
+      <DialogTrigger className="h-full w-full text-left">Rename</DialogTrigger>
       <DialogContent className="border-zinc-900 bg-zinc-950">
         <DialogHeader>
           <DialogTitle className="text-base font-medium text-zinc-500">
