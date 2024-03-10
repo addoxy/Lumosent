@@ -16,7 +16,7 @@ type DashboardCardProps = {
   title: string;
   data: string;
   footer: string;
-  icon: string;
+  icon: 'check' | 'fire' | 'gold' | 'heart';
 };
 
 const DashboardCard = (props: DashboardCardProps) => {

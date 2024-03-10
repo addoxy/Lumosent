@@ -1,6 +1,5 @@
 'use client';
 
-import { createHabit } from '@/app/actions/create-habit';
 import { renameHabit } from '@/app/actions/rename-habit';
 import { Button } from '@/components/vendor/button';
 import {
