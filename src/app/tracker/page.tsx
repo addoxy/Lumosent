@@ -1,12 +1,9 @@
 import { getHabits } from '../actions/get-habits';
-import { postHabit } from '../actions/post-habit';
 import ColumnView from './components/ColumnView';
 import GridView from './components/GridView';
-import NewHabitButton from './components/NewHabitButton';
+import NewHabitButton from './components/NewHabit';
 import TableView from './components/TableView';
 import Navbar from '@/components/Navbar';
-import { Button } from '@/components/vendor/button';
-import { getDatesFromPastWeek } from '@/utils/utils';
 
 const page = async () => {
   const habits = await getHabits();
