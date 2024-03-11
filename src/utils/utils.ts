@@ -150,7 +150,7 @@ export const formatDayStats = (
       date: format(expectedDate, 'dd'),
       'Habits Done': Number.isNaN(completionPercentage)
         ? 0
-        : completionPercentage,
+        : Math.round(completionPercentage * 100) / 100,
     };
   });
 
