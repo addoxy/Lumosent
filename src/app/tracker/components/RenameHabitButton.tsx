@@ -29,7 +29,7 @@ const RenameHabit = (props: RenameHabitProps) => {
       toast.promise(renameHabit(habitId, newName), {
         loading: 'Renaming habit...',
         success: (data) => `${data.message}`,
-        error: (data) => `${data.message}`,
+        error: 'Unable to rename habit!',
       });
     });
   };

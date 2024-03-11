@@ -23,7 +23,7 @@ const DeleteHabitButton = ({ habitId }: { habitId: string }) => {
       toast.promise(deleteHabit(habitId), {
         loading: 'Deleting habit...',
         success: (data) => `${data.message}`,
-        error: (data) => `${data.message}`,
+        error: 'Unable to delete habit!',
       });
     });
   };

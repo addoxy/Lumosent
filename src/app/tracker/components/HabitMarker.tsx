@@ -6,6 +6,7 @@ import { cn, formatDate } from '@/utils/utils';
 import { getDayFromDate } from '@/utils/utils';
 import { parseISO } from 'date-fns';
 import { useTransition } from 'react';
+import { toast } from 'sonner';
 
 type DayToggleProps = {
   date: string;
@@ -22,20 +23,14 @@ const HabitMarker = (props: DayToggleProps) => {
   const handleToggle = () => {
     startTransition(() => {
       if (!completed) {
-        addLog(habitId, parseISO(date + 'T00:00:00Z')).then((data) => {
-          if (data.error) {
-            console.log(data.error);
-          } else if (data.success) {
-            console.log(data.success);
-          }
+        toast.promise(addLog(habitId, parseISO(date + 'T00:00:00Z')), {
+          success: (data) => `${data.message}`,
+          error: 'Unable to add log!',
         });
       } else {
-        removeLog(habitId, parseISO(date + 'T00:00:00Z')).then((data) => {
-          if (data.error) {
-            console.log(data.error);
-          } else if (data.success) {
-            console.log(data.success);
-          }
+        toast.promise(removeLog(habitId, parseISO(date + 'T00:00:00Z')), {
+          success: (data) => `${data.message}`,
+          error: 'Unable to remove log!',
         });
       }
     });

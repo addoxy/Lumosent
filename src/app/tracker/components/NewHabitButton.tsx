@@ -43,7 +43,7 @@ const NewHabitButton = () => {
       toast.promise(createHabit(habit), {
         loading: 'Creating habit...',
         success: (data) => `${data.message}`,
-        error: (data) => `${data.message}`,
+        error: 'Unable to create habit!',
       });
     });
   };
