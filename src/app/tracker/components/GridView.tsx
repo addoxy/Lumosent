@@ -30,7 +30,7 @@ const HabitCard = (props: HabitProps) => {
   return (
     <Card
       className={cn(
-        'flex flex-col border-zinc-800 bg-zinc-950 px-8 pb-8 pt-7',
+        'flex flex-col border-zinc-800 bg-zinc-900 px-8 pb-8 pt-7',
         view !== 'grid' && 'hidden'
       )}
     >
