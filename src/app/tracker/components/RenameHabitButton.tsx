@@ -20,22 +20,25 @@ type RenameHabitProps = {
 
 const RenameHabit = (props: RenameHabitProps) => {
   const { habitId, prevName } = props;
-
   const [newName, setNewName] = useState(prevName);
   const [isPending, startTransition] = useTransition();
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = () => {
     startTransition(() => {
       toast.promise(renameHabit(habitId, newName), {
         loading: 'Renaming habit...',
-        success: (data) => `${data.message}`,
+        success: (data) => {
+          setOpen(false);
+          return `${data.message}`;
+        },
         error: 'Unable to rename habit!',
       });
     });
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger className="h-full w-full text-left">Rename</DialogTrigger>
       <DialogContent className="border-zinc-900 bg-zinc-950">
         <DialogHeader>
@@ -46,7 +49,6 @@ const RenameHabit = (props: RenameHabitProps) => {
         <Input
           className="border border-zinc-800 bg-zinc-900 text-zinc-200 outline-zinc-500 placeholder:text-zinc-600 focus-visible:outline"
           value={newName}
-          placeholder={prevName}
           disabled={isPending}
           onChange={(e) => setNewName(e.target.value)}
         />

@@ -37,19 +37,23 @@ const PLACEHOLDER_HABITS = [
 const NewHabitButton = () => {
   const [habit, setHabit] = useState('');
   const [isPending, startTransition] = useTransition();
+  const [open, setOpen] = useState(false);
 
   const handleSubmit = () => {
     startTransition(() => {
       toast.promise(createHabit(habit), {
         loading: 'Creating habit...',
-        success: (data) => `${data.message}`,
+        success: (data) => {
+          setOpen(false);
+          return `${data.message}`;
+        },
         error: 'Unable to create habit!',
       });
     });
   };
 
   return (
-    <Dialog>
+    <Dialog open={open} onOpenChange={setOpen}>
       <DialogTrigger asChild>
         <Button
           variant="outline"
