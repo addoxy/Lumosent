@@ -21,6 +21,19 @@ const page = async () => {
   const favoriteHabit = await getFavoriteHabit();
   const graphStats = await getGraphStats();
 
+  if (
+    !totalLogs ||
+    !todaysHabitCount ||
+    !longestStreak ||
+    !favoriteHabit ||
+    !graphStats
+  ) {
+    return (
+      <p className="mx-auto mt-40 text-lg text-zinc-300">
+        &#x1F641; Something went wrong! Please try again later!
+      </p>
+    );
+  }
   return (
     <div className="flex flex-col gap-y-6">
       <div className="grid grid-cols-1 gap-x-6 gap-y-6 sm:grid-cols-2 lg:grid-cols-4">
