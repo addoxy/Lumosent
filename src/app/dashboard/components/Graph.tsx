@@ -24,6 +24,7 @@ const Graph = (props: ChartProps) => {
       showGridLines={false}
       curveType="monotone"
       customTooltip={CustomTooltip}
+      showLegend={false}
     />
   );
 };
