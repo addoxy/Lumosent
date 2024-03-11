@@ -1,6 +1,7 @@
 'use client';
 
 import Navbar from './Navbar';
+import { Toaster } from './vendor/sonner';
 import Providers from '@/utils/providers';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
@@ -27,6 +28,7 @@ const PageWrapper = ({ children }: { children: ReactNode }) => {
         {!EXCLUDED_PATHS.includes(pathname) && <Navbar title={currentPath} />}
         {children}
       </main>
+      <Toaster position="top-right" />
     </Providers>
   );
 };

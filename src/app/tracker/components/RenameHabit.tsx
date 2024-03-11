@@ -11,6 +11,7 @@ import {
 } from '@/components/vendor/dialog';
 import { Input } from '@/components/vendor/input';
 import { useState, useTransition } from 'react';
+import { toast } from 'sonner';
 
 type RenameHabitProps = {
   prevName: string;
@@ -25,12 +26,10 @@ const RenameHabit = (props: RenameHabitProps) => {
 
   const handleSubmit = () => {
     startTransition(() => {
-      renameHabit(habitId, newName).then((data) => {
-        if (data.error) {
-          console.log(data.error);
-        } else if (data.success) {
-          console.log(data.success);
-        }
+      toast.promise(renameHabit(habitId, newName), {
+        loading: 'Renaming habit...',
+        success: (data) => `${data.message}`,
+        error: (data) => `${data.message}`,
       });
     });
   };

@@ -12,6 +12,7 @@ import {
 } from '@/components/vendor/card';
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
+import { toast } from 'sonner';
 
 type KitProps = {
   id: string;
@@ -22,18 +23,18 @@ type KitProps = {
 
 const Kit = (props: KitProps) => {
   const { description, habits, id, name } = props;
-  const [isPending, setTransition] = useTransition();
+  const [isPending, startTransition] = useTransition();
   const router = useRouter();
 
-  const handleSubmit = async () => {
-    setTransition(() => {
-      cloneKit(habits).then((data) => {
-        if (data.success) {
-          console.log(data.success);
+  const handleSubmit = () => {
+    startTransition(() => {
+      toast.promise(cloneKit(habits), {
+        loading: 'Creating new habits...',
+        success: (data) => {
           router.push('/tracker');
-        } else if (data.error) {
-          console.log(data.error);
-        }
+          return `${data.message}`;
+        },
+        error: (data) => `${data.message}`,
       });
     });
   };

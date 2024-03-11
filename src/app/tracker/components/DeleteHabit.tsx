@@ -13,18 +13,17 @@ import {
   AlertDialogTrigger,
 } from '@/components/vendor/alert-dialog';
 import { useTransition } from 'react';
+import { toast } from 'sonner';
 
 const DeleteHabit = ({ habitId }: { habitId: string }) => {
   const [isPending, startTransition] = useTransition();
 
   const handleSubmit = () => {
     startTransition(() => {
-      deleteHabit(habitId).then((data) => {
-        if (data.error) {
-          console.log(data.error);
-        } else if (data.success) {
-          console.log(data.success);
-        }
+      toast.promise(deleteHabit(habitId), {
+        loading: 'Deleting habit...',
+        success: (data) => `${data.message}`,
+        error: (data) => `${data.message}`,
       });
     });
   };

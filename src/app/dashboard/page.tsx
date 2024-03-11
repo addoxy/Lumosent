@@ -20,6 +20,7 @@ const page = async () => {
   const longestStreak = await getUserLongestStreak();
   const favoriteHabit = await getFavoriteHabit();
   const graphStats = await getGraphStats();
+  console.log(favoriteHabit);
 
   if (
     totalLogs === null ||

@@ -11,6 +11,7 @@ import {
 } from '@/components/vendor/dialog';
 import { Input } from '@/components/vendor/input';
 import { useState, useTransition } from 'react';
+import { toast } from 'sonner';
 
 const PLACEHOLDER_HABITS = [
   'Meditation',
@@ -39,12 +40,10 @@ const NewHabit = () => {
 
   const handleSubmit = () => {
     startTransition(() => {
-      createHabit(habit).then((data) => {
-        if (data.error) {
-          console.log(data.error);
-        } else if (data.success) {
-          console.log(data.success);
-        }
+      toast.promise(createHabit(habit), {
+        loading: 'Creating habit...',
+        success: (data) => `${data.message}`,
+        error: (data) => `${data.message}`,
       });
     });
   };

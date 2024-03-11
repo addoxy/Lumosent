@@ -1,7 +1,7 @@
 'use server';
 
 import { prisma } from '@/lib/prisma';
-import { ServerResponse, getUser } from '@/utils/server';
+import { getUser } from '@/utils/server';
 import { formatDayStats, getDaysCount, getLongestStreak } from '@/utils/utils';
 import { endOfDay, format, parseISO, startOfDay, sub } from 'date-fns';
 
@@ -9,7 +9,7 @@ export const getTotalLogs = async () => {
   const user = await getUser();
 
   if (!user) {
-    return null;
+    return Promise.reject({ message: 'Invalid account!' });
   }
 
   try {
@@ -23,8 +23,7 @@ export const getTotalLogs = async () => {
 
     return totalLogs;
   } catch (err) {
-    ServerResponse('Server error', 500);
-    return null;
+    return Promise.reject({ message: 'Unable to fetch logs!' });
   }
 };
 
@@ -33,24 +32,28 @@ export const getTodaysHabitCount = async () => {
   const user = await getUser();
 
   if (!user) {
-    return null;
+    return Promise.reject({ message: 'Invalid account!' });
   }
 
-  const count = await prisma.habitEntry.count({
-    where: {
-      habit: { userId: user.id }, // Filter by the user
-      completedAt: today,
-    },
-  });
+  try {
+    const count = await prisma.habitEntry.count({
+      where: {
+        habit: { userId: user.id }, // Filter by the user
+        completedAt: today,
+      },
+    });
 
-  return count;
+    return count;
+  } catch (err) {
+    return Promise.reject({ message: "Unable to fetch today's habits count!" });
+  }
 };
 
 export const getUserLongestStreak = async () => {
   const user = await getUser();
 
   if (!user) {
-    return null;
+    return Promise.reject({ message: 'Invalid account!' });
   }
 
   try {
@@ -65,8 +68,7 @@ export const getUserLongestStreak = async () => {
     const longestStreak = await getLongestStreak(entriesByHabit);
     return longestStreak;
   } catch (err) {
-    ServerResponse('Server error', 500);
-    return null;
+    return Promise.reject({ message: 'Unable to fetch your longest streak!' });
   }
 };
 
@@ -74,7 +76,7 @@ export const getFavoriteHabit = async () => {
   const user = await getUser();
 
   if (!user) {
-    return null;
+    return Promise.reject({ message: 'Invalid account!' });
   }
 
   try {
@@ -100,7 +102,6 @@ export const getFavoriteHabit = async () => {
 
     return habit;
   } catch (err) {
-    ServerResponse('Server error', 500);
     return null;
   }
 };
@@ -109,7 +110,7 @@ export const getGraphStats = async (daysBack = 7) => {
   const user = await getUser();
 
   if (!user) {
-    return null;
+    return Promise.reject({ message: 'Invalid account!' });
   }
 
   const startDate = sub(new Date(), { days: daysBack });
@@ -131,7 +132,6 @@ export const getGraphStats = async (daysBack = 7) => {
     const results = formatDayStats(dailyCounts, totalHabitCount);
     return results;
   } catch (err) {
-    ServerResponse('Server error', 500);
-    return null;
+    return Promise.reject({ message: 'Unable to fetch visual stats!' });
   }
 };

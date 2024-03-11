@@ -1,14 +1,14 @@
 'use server';
 
 import { prisma } from '@/lib/prisma';
-import { ServerResponse, getUser } from '@/utils/server';
+import { getUser } from '@/utils/server';
 import { revalidatePath } from 'next/cache';
 
 export const createHabit = async (label: string) => {
   const user = await getUser();
 
   if (!user) {
-    return { error: 'Something went wrong!' };
+    return Promise.reject({ message: 'Invalid account!' });
   }
 
   try {
@@ -18,11 +18,10 @@ export const createHabit = async (label: string) => {
         userId: user.id,
       },
     });
-  } catch (err) {
-    ServerResponse('Server error', 500);
-    return { error: 'Something went wrong!' };
-  }
 
-  revalidatePath('/tracker');
-  return { success: 'Successfully created habit!' };
+    revalidatePath('/tracker');
+    return Promise.resolve({ message: 'Successfully created habit!' });
+  } catch (err) {
+    return Promise.reject({ message: 'Unable to create habit!' });
+  }
 };
