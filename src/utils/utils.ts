@@ -148,7 +148,9 @@ export const formatDayStats = (
 
     return {
       date: format(expectedDate, 'dd'),
-      'Habits Done': completionPercentage,
+      'Habits Done': Number.isNaN(completionPercentage)
+        ? 0
+        : completionPercentage,
     };
   });
 
