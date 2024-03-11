@@ -1,7 +1,7 @@
 'use client';
 
-import DeleteHabit from './DeleteHabit';
-import RenameHabit from './RenameHabit';
+import DeleteHabitButton from './DeleteHabitButton';
+import RenameHabitButton from './RenameHabitButton';
 import { ThreeDotsIcon } from '@/components/Icons';
 import {
   DropdownMenu,
@@ -11,7 +11,7 @@ import {
 } from '@/components/vendor/dropdown-menu';
 import { Habit } from '@/lib/types';
 
-const HabitDropdown = ({ habit }: { habit: Habit }) => {
+const HabitMenu = ({ habit }: { habit: Habit }) => {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger className="rounded-md p-0.5 hover:bg-zinc-900">
@@ -25,17 +25,17 @@ const HabitDropdown = ({ habit }: { habit: Habit }) => {
           onClick={(e) => e.preventDefault()}
           className="h-9 cursor-pointer hover:bg-zinc-800"
         >
-          <RenameHabit habitId={habit.id} prevName={habit.label} />
+          <RenameHabitButton habitId={habit.id} prevName={habit.label} />
         </DropdownMenuItem>
         <DropdownMenuItem
           onClick={(e) => e.preventDefault()}
           className="h-9 cursor-pointer hover:bg-zinc-800"
         >
-          <DeleteHabit habitId={habit.id} />
+          <DeleteHabitButton habitId={habit.id} />
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   );
 };
 
-export default HabitDropdown;
+export default HabitMenu;

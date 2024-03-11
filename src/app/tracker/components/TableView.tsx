@@ -1,7 +1,7 @@
 'use client';
 
-import HabitDropdown from './HabitDropdown';
 import HabitMarker from './HabitMarker';
+import HabitDropdown from './HabitMenu';
 import {
   Table,
   TableBody,

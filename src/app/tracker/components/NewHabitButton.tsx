@@ -34,7 +34,7 @@ const PLACEHOLDER_HABITS = [
   'Plan a fun activity',
 ];
 
-const NewHabit = () => {
+const NewHabitButton = () => {
   const [habit, setHabit] = useState('');
   const [isPending, startTransition] = useTransition();
 
@@ -87,4 +87,4 @@ const NewHabit = () => {
   );
 };
 
-export default NewHabit;
+export default NewHabitButton;

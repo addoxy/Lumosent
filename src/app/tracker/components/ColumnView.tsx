@@ -1,7 +1,7 @@
 'use client';
 
-import HabitDropdown from './HabitDropdown';
 import HabitMarker from './HabitMarker';
+import HabitDropdown from './HabitMenu';
 import { useView } from '@/lib/hooks/use-view';
 import { Habit, HabitProps } from '@/lib/types';
 import { cn, dateToString, getDatesFromPastWeek } from '@/utils/utils';
