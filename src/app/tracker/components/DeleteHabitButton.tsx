@@ -39,8 +39,9 @@ const DeleteHabitButton = ({ habitId }: { habitId: string }) => {
             Are you sure you want to delete this habit?
           </AlertDialogTitle>
           <AlertDialogDescription className="text-zinc-300">
-            This action cannot be undone. This will permanently delete all the
-            data associated with this habit.
+            This action cannot be undone. It will permanently delete all the
+            data associated with this habit, including the statistics for the
+            overview.
           </AlertDialogDescription>
         </AlertDialogHeader>
         <AlertDialogFooter>
