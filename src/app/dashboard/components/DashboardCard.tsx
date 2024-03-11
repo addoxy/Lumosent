@@ -11,6 +11,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/vendor/card';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/vendor/tooltip';
 
 type DashboardCardProps = {
   title: string;
@@ -33,7 +39,20 @@ const DashboardCard = (props: DashboardCardProps) => {
           {icon === 'heart' && <HeartIcon className="size-2.5" />}
         </div>
       </CardHeader>
-      <CardContent className="mb-1 text-3xl text-zinc-50">{data}</CardContent>
+      <TooltipProvider>
+        <CardContent className="mb-1">
+          <Tooltip>
+            <TooltipTrigger>
+              <p className="line-clamp-1 text-left text-3xl text-zinc-50">
+                {data}
+              </p>
+            </TooltipTrigger>
+            <TooltipContent className="bg-zinc-800 text-zinc-50">
+              {data}
+            </TooltipContent>
+          </Tooltip>
+        </CardContent>
+      </TooltipProvider>
       <CardFooter className="text-xs text-zinc-400">{footer}</CardFooter>
     </Card>
   );
