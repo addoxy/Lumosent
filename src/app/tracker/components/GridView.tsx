@@ -13,12 +13,12 @@ const GridView = ({ habits }: { habits: Habit[] }) => {
   const datesFromPastWeek = getDatesFromPastWeek();
 
   return (
-    <div className="grid grid-cols-2 gap-6">
+    <div className="mx-auto grid max-w-screen-sm grid-cols-1 gap-6 lg:max-w-none lg:grid-cols-2">
       {habits.map((habit) => (
         <Card
           key={habit.id}
           className={cn(
-            'flex flex-col border-zinc-800 bg-zinc-900 px-8 pb-8 pt-7',
+            'flex flex-col border-zinc-800 bg-zinc-900 px-6 pb-6 pt-5 sm:px-8 sm:pb-8 sm:pt-7',
             view !== 'grid' && 'hidden'
           )}
         >
