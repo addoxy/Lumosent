@@ -11,14 +11,8 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/vendor/table';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/vendor/tooltip';
 import { useView } from '@/lib/hooks/use-view';
-import { Habit, HabitProps } from '@/lib/types';
+import { Habit } from '@/lib/types';
 import {
   cn,
   dateToString,
@@ -44,40 +38,31 @@ const TableView = ({ habits }: { habits: Habit[] }) => {
       </TableHeader>
       <TableBody>
         {habits.map((habit) => (
-          <HabitRow key={habit.id} habit={habit} />
+          <TableRow key={habit.id} className="h-24 border-b-zinc-900">
+            <TableCell className="w-2/5 text-zinc-200">
+              <TextTooltip text={habit.label} className="text-zinc-100" />
+            </TableCell>
+            {datesFromPastWeek.map((date, i) => (
+              <TableCell key={i} className="text-center">
+                <HabitMarker
+                  date={date}
+                  completed={
+                    !!habit.entries.find(
+                      (entry) => dateToString(entry.completedAt) === date
+                    )
+                  }
+                  showDay={false}
+                  habitId={habit.id}
+                />
+              </TableCell>
+            ))}
+            <TableCell>
+              <HabitDropdown habit={habit} />
+            </TableCell>
+          </TableRow>
         ))}
       </TableBody>
     </Table>
-  );
-};
-
-const HabitRow = (props: HabitProps) => {
-  const { habit } = props;
-  const datesFromPastWeek = getDatesFromPastWeek();
-
-  return (
-    <TableRow className="h-24 border-b-zinc-900">
-      <TableCell className="w-2/5 text-zinc-200">
-        <TextTooltip text={habit.label} className="text-zinc-100" />
-      </TableCell>
-      {datesFromPastWeek.map((date, i) => (
-        <TableCell key={i} className="text-center">
-          <HabitMarker
-            date={date}
-            completed={
-              !!habit.entries.find(
-                (entry) => dateToString(entry.completedAt) === date
-              )
-            }
-            showDay={false}
-            habitId={habit.id}
-          />
-        </TableCell>
-      ))}
-      <TableCell>
-        <HabitDropdown habit={habit} />
-      </TableCell>
-    </TableRow>
   );
 };
 

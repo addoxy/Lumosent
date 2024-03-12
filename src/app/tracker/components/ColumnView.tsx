@@ -4,11 +4,12 @@ import HabitMarker from './HabitMarker';
 import HabitDropdown from './HabitMenu';
 import TextTooltip from '@/components/TextTooltip';
 import { useView } from '@/lib/hooks/use-view';
-import { Habit, HabitProps } from '@/lib/types';
+import { Habit } from '@/lib/types';
 import { cn, dateToString, getDatesFromPastWeek } from '@/utils/utils';
 
 const ColumnView = ({ habits }: { habits: Habit[] }) => {
   const { view } = useView();
+  const datesFromPastWeek = getDatesFromPastWeek();
 
   return (
     <div
@@ -18,38 +19,32 @@ const ColumnView = ({ habits }: { habits: Habit[] }) => {
       )}
     >
       {habits.map((habit) => (
-        <HabitLine key={habit.id} habit={habit} />
+        <div key={habit.id} className="flex flex-col">
+          <div className="mb-6 flex justify-between">
+            <TextTooltip
+              text={habit.label}
+              className="font-medium text-zinc-100"
+            />
+            <HabitDropdown habit={habit} />
+          </div>
+          <div className="flex justify-between">
+            {datesFromPastWeek.map((date, i) => (
+              <HabitMarker
+                date={date}
+                key={i}
+                completed={
+                  !!habit.entries.find(
+                    (entry) => dateToString(entry.completedAt) === date
+                  )
+                }
+                showDay={true}
+                habitId={habit.id}
+                dayAlign="bottom"
+              />
+            ))}
+          </div>
+        </div>
       ))}
-    </div>
-  );
-};
-
-const HabitLine = (props: HabitProps) => {
-  const { habit } = props;
-  const datesFromPastWeek = getDatesFromPastWeek();
-
-  return (
-    <div className="flex flex-col">
-      <div className="mb-6 flex justify-between">
-        <TextTooltip text={habit.label} className="font-medium text-zinc-100" />
-        <HabitDropdown habit={habit} />
-      </div>
-      <div className="flex justify-between">
-        {datesFromPastWeek.map((date, i) => (
-          <HabitMarker
-            date={date}
-            key={i}
-            completed={
-              !!habit.entries.find(
-                (entry) => dateToString(entry.completedAt) === date
-              )
-            }
-            showDay={true}
-            habitId={habit.id}
-            dayAlign="bottom"
-          />
-        ))}
-      </div>
     </div>
   );
 };
