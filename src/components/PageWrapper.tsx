@@ -3,6 +3,7 @@
 import Navbar from './Navbar';
 import { Toaster } from './vendor/sonner';
 import Providers from '@/utils/providers';
+import { cn } from '@/utils/utils';
 import { usePathname } from 'next/navigation';
 import { ReactNode } from 'react';
 
@@ -25,7 +26,12 @@ const PageWrapper = ({ children }: { children: ReactNode }) => {
   return (
     <Providers>
       <Toaster position="top-center" />
-      <main className="mx-auto flex min-h-screen w-full max-w-screen-2xl flex-col px-4 py-10 sm:px-10 lg:px-16 xl:px-24">
+      <main
+        className={cn(
+          'mx-auto flex min-h-screen w-full max-w-screen-2xl flex-col px-4 py-10 sm:px-10 sm:pb-20 lg:px-16 xl:px-24',
+          currentPath === 'Dashboard' && 'sm:pb-10'
+        )}
+      >
         {!EXCLUDED_PATHS.includes(pathname) && <Navbar title={currentPath} />}
         {children}
       </main>
