@@ -23,7 +23,7 @@ import Link from 'next/link';
 import { useState } from 'react';
 
 const Dropdown = () => {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   const [isOpen, setIsOpen] = useState(false);
 
   return (

@@ -2,8 +2,8 @@
 
 import { prisma } from '@/lib/prisma';
 import { getUser } from '@/utils/server';
-import { formatDayStats, getDaysCount, getLongestStreak } from '@/utils/utils';
-import { endOfDay, format, parseISO, startOfDay, sub } from 'date-fns';
+import { formatDayStats, getLongestStreak } from '@/utils/utils';
+import { format, sub } from 'date-fns';
 
 export const getTotalLogs = async () => {
   const user = await getUser();

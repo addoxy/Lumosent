@@ -1,12 +1,12 @@
 import { getKits } from '../actions/get-kits';
-import Kit from './components/Kit';
+import StarterKit from './components/StarterKit';
 
 const page = async () => {
-  const kits = await getKits();
+  const starterKits = await getKits();
 
   return (
     <div className="mx-auto grid w-[640px] grid-cols-1 gap-6">
-      {kits?.map((kit) => <Kit key={kit.id} {...kit} />)}
+      {starterKits?.map((kit) => <StarterKit key={kit.id} {...kit} />)}
     </div>
   );
 };

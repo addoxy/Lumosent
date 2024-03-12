@@ -19,7 +19,7 @@ type KitProps = {
   habits: string[];
 };
 
-const Kit = (props: KitProps) => {
+const StarterKit = (props: KitProps) => {
   const { description, habits, id, name } = props;
   const [isPending, startTransition] = useTransition();
   const router = useRouter();
@@ -62,4 +62,4 @@ const Kit = (props: KitProps) => {
   );
 };
 
-export default Kit;
+export default StarterKit;

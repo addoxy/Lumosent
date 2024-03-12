@@ -10,7 +10,3 @@ export type Entry = {
   completedAt: Date;
   habitId: string;
 };
-
-export type HabitProps = {
-  habit: Habit;
-};

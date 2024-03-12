@@ -45,7 +45,6 @@ const NewHabit = () => {
       return;
     }
 
-    // create a custom hook for this and use it wherever needed
     startTransition(() => {
       toast.promise(createHabit(habit), {
         loading: 'Creating habit...',

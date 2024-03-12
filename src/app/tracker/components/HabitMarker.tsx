@@ -8,7 +8,7 @@ import { parseISO } from 'date-fns';
 import { useTransition } from 'react';
 import { toast } from 'sonner';
 
-type DayToggleProps = {
+type HabitMarkerProps = {
   date: string;
   showDay: boolean;
   completed: boolean;
@@ -16,7 +16,7 @@ type DayToggleProps = {
   habitId: string;
 };
 
-const HabitMarker = (props: DayToggleProps) => {
+const HabitMarker = (props: HabitMarkerProps) => {
   const { date, showDay, dayAlign, completed, habitId } = props;
   const [isPending, startTransition] = useTransition();
 
