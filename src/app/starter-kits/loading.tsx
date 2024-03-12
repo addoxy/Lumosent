@@ -2,12 +2,12 @@ import { Skeleton } from '@/components/vendor/skeleton';
 
 const loading = () => {
   return (
-    <div className="mx-auto flex flex-col gap-y-6">
-      <Skeleton className="h-20 w-[640px] rounded-xl bg-zinc-900/40" />
-      <Skeleton className="h-20 w-[640px] rounded-xl bg-zinc-900/40" />
-      <Skeleton className="h-20 w-[640px] rounded-xl bg-zinc-900/40" />
-      <Skeleton className="h-20 w-[640px] rounded-xl bg-zinc-900/40" />
-      <Skeleton className="h-20 w-[640px] rounded-xl bg-zinc-900/40" />
+    <div className="flex w-full flex-col gap-y-6 sm:mx-auto sm:w-min">
+      <Skeleton className="h-20 w-full rounded-xl bg-zinc-900/40 md:w-[640px]" />
+      <Skeleton className="h-20 w-full rounded-xl bg-zinc-900/40 md:w-[640px]" />
+      <Skeleton className="h-20 w-full rounded-xl bg-zinc-900/40 md:w-[640px]" />
+      <Skeleton className="h-20 w-full rounded-xl bg-zinc-900/40 md:w-[640px]" />
+      <Skeleton className="h-20 w-full rounded-xl bg-zinc-900/40 md:w-[640px]" />
     </div>
   );
 };
