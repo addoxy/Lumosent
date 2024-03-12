@@ -34,7 +34,7 @@ const Dropdown = () => {
             className="size-8 rounded-full"
             src={session?.user?.image || ''}
           />
-          <AvatarFallback className="flex size-8 items-center justify-center rounded-full bg-violet-800 text-xs font-medium text-zinc-50">
+          <AvatarFallback className="flex size-8 items-center justify-center rounded-full bg-zinc-800 text-xs font-medium text-zinc-50">
             {session?.user?.name && formatName(session?.user?.name)}
           </AvatarFallback>
         </Avatar>
