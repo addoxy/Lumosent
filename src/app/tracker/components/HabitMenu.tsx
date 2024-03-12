@@ -92,12 +92,12 @@ const HabitMenu = ({ habit }: { habit: Habit }) => {
               <AlertDialogTrigger className="h-full w-full text-left text-zinc-200">
                 Delete
               </AlertDialogTrigger>
-              <AlertDialogContent className="border-zinc-900 bg-zinc-950">
+              <AlertDialogContent className="w-[96%] rounded-lg border-zinc-900 bg-zinc-950">
                 <AlertDialogHeader>
-                  <AlertDialogTitle className="text-zinc-200">
+                  <AlertDialogTitle className="text-left text-zinc-200">
                     Are you sure you want to delete this habit?
                   </AlertDialogTitle>
-                  <AlertDialogDescription className="text-zinc-300">
+                  <AlertDialogDescription className="text-left text-zinc-300">
                     This action cannot be undone. It will permanently delete all
                     the data associated with this habit, including the
                     statistics for the overview.
@@ -127,10 +127,10 @@ const HabitMenu = ({ habit }: { habit: Habit }) => {
         </DropdownMenuContent>
       </DropdownMenu>
       <Dialog open={renameOpen} onOpenChange={setRenameOpen}>
-        <DialogContent className="border-zinc-900 bg-zinc-950">
+        <DialogContent className="w-[96%] rounded-lg border-zinc-900 bg-zinc-950">
           <form action={handleRename}>
             <DialogHeader className="mb-4">
-              <DialogTitle className="text-base font-medium text-zinc-500">
+              <DialogTitle className="text-left text-base font-medium text-zinc-500">
                 Habit name
               </DialogTitle>
             </DialogHeader>
