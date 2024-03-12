@@ -2,8 +2,8 @@ import { create } from 'zustand';
 import { createJSONStorage, persist } from 'zustand/middleware';
 
 type ViewState = {
-  view: 'grid' | 'table' | 'mobile';
-  setView: (view: 'grid' | 'table' | 'mobile') => void;
+  view: 'grid' | 'table' | 'column';
+  setView: (view: 'grid' | 'table' | 'column') => void;
 };
 
 export const useView = create<ViewState>()(

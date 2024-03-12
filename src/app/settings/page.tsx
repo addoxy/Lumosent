@@ -9,13 +9,13 @@ const SettingsPage = () => {
   const { view, setView } = useView();
 
   return (
-    <div className="mx-auto flex flex-col">
+    <div className="flex flex-col sm:mx-auto">
       <section>
         <h2 className="mb-3 text-lg font-medium text-zinc-200">Views</h2>
         <p className="mb-4 text-zinc-400">
           Choose the type of view you want for your habits
         </p>
-        <div className="flex gap-x-6">
+        <div className="grid grid-cols-1 place-items-center gap-y-6 sm:flex sm:gap-x-6 sm:gap-y-0">
           <div className="flex flex-col">
             <h3 className="mb-2 font-medium text-zinc-400">Table</h3>
             <Toggle
@@ -52,13 +52,13 @@ const SettingsPage = () => {
             </Toggle>
           </div>
           <div>
-            <h3 className="mb-2 font-medium text-zinc-400">Mobile</h3>
+            <h3 className="mb-2 font-medium text-zinc-400">Column</h3>
             <Toggle
-              pressed={view === 'mobile'}
-              onPressedChange={() => setView('mobile')}
+              pressed={view === 'column'}
+              onPressedChange={() => setView('column')}
               className={cn(
                 'size-40 rounded-md bg-zinc-800 p-1.5',
-                view === 'mobile' && 'border border-zinc-200'
+                view === 'column' && 'border border-zinc-200'
               )}
             >
               <div className="flex h-full w-full flex-col items-center justify-center rounded-md bg-zinc-950">
