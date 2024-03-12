@@ -1,15 +1,13 @@
 'use client';
 
 import { cloneKit } from '@/app/actions/clone-kit';
-import { Button } from '@/components/vendor/button';
 import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardFooter,
-  CardHeader,
-  CardTitle,
-} from '@/components/vendor/card';
+  Accordion,
+  AccordionContent,
+  AccordionItem,
+  AccordionTrigger,
+} from '@/components/vendor/accordion';
+import { Button } from '@/components/vendor/button';
 import { useRouter } from 'next/navigation';
 import { useTransition } from 'react';
 import { toast } from 'sonner';
@@ -40,35 +38,27 @@ const Kit = (props: KitProps) => {
   };
 
   return (
-    <Card className="flex flex-col justify-between border-zinc-800 bg-zinc-900 px-8 py-6">
-      <div className="mb-6">
-        <CardHeader className="mb-4">
-          <CardTitle className="mb-1 text-lg font-medium text-zinc-200">
-            {name}
-          </CardTitle>
-          <CardDescription className="text-base font-normal text-zinc-300">
-            {description}
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <h4 className="mb-1 text-zinc-300">Habits:</h4>
-          <ul className="list-inside list-disc space-y-1 text-zinc-300">
-            {habits.map((habit, i) => (
-              <li key={i}>{habit}</li>
-            ))}
-          </ul>
-        </CardContent>
-      </div>
-      <CardFooter>
-        <Button
-          onClick={handleSubmit}
-          className="w-full bg-zinc-200 font-semibold text-zinc-800 hover:bg-zinc-400"
-          disabled={isPending}
-        >
-          Get starer kit
-        </Button>
-      </CardFooter>
-    </Card>
+    <Accordion type="single" collapsible>
+      <AccordionItem value={name} className="border-b-zinc-600 pb-2">
+        <AccordionTrigger className="text-zinc-200">{name}</AccordionTrigger>
+        <AccordionContent className="text-zinc-300">
+          <div className="flex flex-col">
+            <p className="mb-3">{description}</p>
+            <p className="mb-4 leading-6">
+              <span className="font-medium">Habits:</span> {habits.join(', ')}
+            </p>
+          </div>
+          <Button
+            disabled={isPending}
+            onClick={handleSubmit}
+            variant="link"
+            className="p-0 underline"
+          >
+            Get starter kit -{'>'}
+          </Button>
+        </AccordionContent>
+      </AccordionItem>
+    </Accordion>
   );
 };
 

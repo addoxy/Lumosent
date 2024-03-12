@@ -5,7 +5,7 @@ const page = async () => {
   const kits = await getKits();
 
   return (
-    <div className="grid grid-cols-3 gap-6">
+    <div className="mx-auto grid w-[640px] grid-cols-1 gap-6">
       {kits?.map((kit) => <Kit key={kit.id} {...kit} />)}
     </div>
   );
