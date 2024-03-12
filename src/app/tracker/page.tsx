@@ -1,7 +1,7 @@
 import { getHabits } from '../actions/get-habits';
 import ColumnView from './components/ColumnView';
 import GridView from './components/GridView';
-import NewHabitButton from './components/NewHabitButton';
+import NewHabit from './components/NewHabit';
 import TableView from './components/TableView';
 
 const page = async () => {
@@ -10,7 +10,7 @@ const page = async () => {
   return (
     <div className="flex flex-col">
       <div className="mb-5 mt-10 flex justify-end">
-        <NewHabitButton />
+        <NewHabit />
       </div>
       {!habits && (
         <p className="mx-auto mt-20 text-lg text-zinc-300">
