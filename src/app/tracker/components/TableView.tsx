@@ -25,7 +25,12 @@ const TableView = ({ habits }: { habits: Habit[] }) => {
   const datesFromPastWeek = getDatesFromPastWeek();
 
   return (
-    <Table className={cn(view !== 'table' && 'hidden')}>
+    <Table
+      className={cn(
+        view !== 'table' && 'hidden',
+        view === 'table' && 'hidden md:block'
+      )}
+    >
       <TableHeader className="text-zinc-400">
         <TableRow className="h-20 border-b-zinc-900">
           <TableHead className="w-2/5">Habits</TableHead>

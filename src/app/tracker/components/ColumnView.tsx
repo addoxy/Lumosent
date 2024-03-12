@@ -15,7 +15,8 @@ const ColumnView = ({ habits }: { habits: Habit[] }) => {
     <div
       className={cn(
         'mx-auto flex flex-col gap-y-10 sm:w-2/3 lg:w-1/2',
-        view !== 'mobile' && 'hidden'
+        view !== 'mobile' && 'hidden',
+        view === 'table' && 'flex flex-col md:hidden'
       )}
     >
       {habits.map((habit) => (
