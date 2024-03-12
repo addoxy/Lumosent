@@ -13,7 +13,7 @@ const GridView = ({ habits }: { habits: Habit[] }) => {
   const datesFromPastWeek = getDatesFromPastWeek();
 
   return (
-    <div className="mx-auto grid max-w-screen-sm grid-cols-1 gap-6 lg:max-w-none lg:grid-cols-2">
+    <div className="grid grid-cols-1 gap-6 md:mx-20 lg:mx-0 lg:grid-cols-2">
       {habits.map((habit) => (
         <Card
           key={habit.id}

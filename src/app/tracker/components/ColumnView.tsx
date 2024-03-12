@@ -14,7 +14,7 @@ const ColumnView = ({ habits }: { habits: Habit[] }) => {
   return (
     <div
       className={cn(
-        'mx-auto flex max-w-screen-md flex-col gap-y-10 divide-y divide-zinc-900 sm:w-2/3 lg:w-1/2',
+        'mx-auto flex w-full max-w-screen-md flex-col gap-y-10 divide-y divide-zinc-900 sm:w-2/3 lg:w-1/2',
         view !== 'column' && 'hidden',
         view === 'table' && 'flex flex-col md:hidden'
       )}

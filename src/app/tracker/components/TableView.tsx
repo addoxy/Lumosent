@@ -28,7 +28,8 @@ const TableView = ({ habits }: { habits: Habit[] }) => {
     <Table
       className={cn(
         view !== 'table' && 'hidden',
-        view === 'table' && 'hidden md:block'
+        view === 'table' && 'hidden md:table',
+        'w-full'
       )}
     >
       <TableHeader className="text-zinc-400">
