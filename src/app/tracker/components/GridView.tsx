@@ -8,6 +8,12 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/vendor/card';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/vendor/tooltip';
 import { useView } from '@/lib/hooks/use-view';
 import { Habit, HabitProps } from '@/lib/types';
 import { cn, dateToString, getDatesFromPastWeek } from '@/utils/utils';
@@ -34,11 +40,22 @@ const HabitCard = (props: HabitProps) => {
         view !== 'grid' && 'hidden'
       )}
     >
-      <CardHeader className="mb-6">
+      <CardHeader className="mb-6 ">
         <div className="flex items-center justify-between">
-          <CardTitle className="text-base font-medium text-zinc-100">
-            {habit.label}
-          </CardTitle>
+          <TooltipProvider>
+            <Tooltip>
+              <TooltipTrigger className="line-clamp-1">
+                <p className="line-clamp-1 text-left">
+                  <CardTitle className="text-base font-medium text-zinc-100">
+                    {habit.label}
+                  </CardTitle>
+                </p>
+              </TooltipTrigger>
+              <TooltipContent className="bg-zinc-800 text-zinc-50">
+                {habit.label}
+              </TooltipContent>
+            </Tooltip>
+          </TooltipProvider>
           <HabitDropdown habit={habit} />
         </div>
       </CardHeader>

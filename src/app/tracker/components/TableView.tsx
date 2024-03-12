@@ -10,6 +10,12 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/vendor/table';
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from '@/components/vendor/tooltip';
 import { useView } from '@/lib/hooks/use-view';
 import { Habit, HabitProps } from '@/lib/types';
 import {
@@ -50,7 +56,18 @@ const HabitRow = (props: HabitProps) => {
 
   return (
     <TableRow className="h-24 border-b-zinc-900">
-      <TableCell className="text-zinc-200">{habit.label}</TableCell>
+      <TableCell className="w-2/5 text-zinc-200">
+        <TooltipProvider>
+          <Tooltip>
+            <TooltipTrigger className="w-96">
+              <p className="truncate text-left">{habit.label}</p>
+            </TooltipTrigger>
+            <TooltipContent className="bg-zinc-800 text-zinc-50">
+              {habit.label}
+            </TooltipContent>
+          </Tooltip>
+        </TooltipProvider>
+      </TableCell>
       {datesFromPastWeek.map((date, i) => (
         <TableCell key={i} className="text-center">
           <HabitMarker
