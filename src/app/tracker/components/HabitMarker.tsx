@@ -26,12 +26,10 @@ const HabitMarker = (props: HabitMarkerProps) => {
     startTransition(() => {
       if (!completed) {
         toast.promise(addLog(habitId, parseISO(date + 'T00:00:00Z')), {
-          success: (data) => `${data.message}`,
           error: 'Unable to add log!',
         });
       } else {
         toast.promise(removeLog(habitId, parseISO(date + 'T00:00:00Z')), {
-          success: (data) => `${data.message}`,
           error: 'Unable to remove log!',
         });
       }
