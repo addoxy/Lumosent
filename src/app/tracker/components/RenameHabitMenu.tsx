@@ -7,7 +7,6 @@ import {
   DialogContent,
   DialogHeader,
   DialogTitle,
-  DialogTrigger,
 } from '@/components/vendor/dialog';
 import { Input } from '@/components/vendor/input';
 import { useState, useTransition } from 'react';
