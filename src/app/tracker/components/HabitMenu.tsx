@@ -130,7 +130,7 @@ const HabitMenu = ({ habit }: { habit: Habit }) => {
         <DialogContent className="w-[96%] rounded-lg border-zinc-900 bg-zinc-950">
           <form action={handleRename}>
             <DialogHeader className="mb-4">
-              <DialogTitle className="text-left text-base font-medium text-zinc-500">
+              <DialogTitle className="text-left text-base font-medium text-zinc-300">
                 Habit name
               </DialogTitle>
             </DialogHeader>
