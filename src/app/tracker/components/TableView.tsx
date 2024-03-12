@@ -2,6 +2,7 @@
 
 import HabitMarker from './HabitMarker';
 import HabitDropdown from './HabitMenu';
+import TextTooltip from '@/components/TextTooltip';
 import {
   Table,
   TableBody,
@@ -57,16 +58,7 @@ const HabitRow = (props: HabitProps) => {
   return (
     <TableRow className="h-24 border-b-zinc-900">
       <TableCell className="w-2/5 text-zinc-200">
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger className="w-96">
-              <p className="truncate text-left">{habit.label}</p>
-            </TooltipTrigger>
-            <TooltipContent className="bg-zinc-800 text-zinc-50">
-              {habit.label}
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <TextTooltip text={habit.label} className="text-zinc-100" />
       </TableCell>
       {datesFromPastWeek.map((date, i) => (
         <TableCell key={i} className="text-center">

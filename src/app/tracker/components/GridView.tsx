@@ -2,6 +2,7 @@
 
 import HabitMarker from './HabitMarker';
 import HabitDropdown from './HabitMenu';
+import TextTooltip from '@/components/TextTooltip';
 import {
   Card,
   CardContent,
@@ -42,20 +43,10 @@ const HabitCard = (props: HabitProps) => {
     >
       <CardHeader className="mb-6 ">
         <div className="flex items-center justify-between">
-          <TooltipProvider>
-            <Tooltip>
-              <TooltipTrigger className="line-clamp-1">
-                <p className="line-clamp-1 text-left">
-                  <CardTitle className="text-base font-medium text-zinc-100">
-                    {habit.label}
-                  </CardTitle>
-                </p>
-              </TooltipTrigger>
-              <TooltipContent className="bg-zinc-800 text-zinc-50">
-                {habit.label}
-              </TooltipContent>
-            </Tooltip>
-          </TooltipProvider>
+          <TextTooltip
+            text={habit.label}
+            className="text-base font-medium text-zinc-100"
+          />
           <HabitDropdown habit={habit} />
         </div>
       </CardHeader>

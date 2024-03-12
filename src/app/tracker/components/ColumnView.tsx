@@ -2,12 +2,7 @@
 
 import HabitMarker from './HabitMarker';
 import HabitDropdown from './HabitMenu';
-import {
-  Tooltip,
-  TooltipContent,
-  TooltipProvider,
-  TooltipTrigger,
-} from '@/components/vendor/tooltip';
+import TextTooltip from '@/components/TextTooltip';
 import { useView } from '@/lib/hooks/use-view';
 import { Habit, HabitProps } from '@/lib/types';
 import { cn, dateToString, getDatesFromPastWeek } from '@/utils/utils';
@@ -36,16 +31,7 @@ const HabitLine = (props: HabitProps) => {
   return (
     <div className="flex flex-col">
       <div className="mb-6 flex justify-between">
-        <TooltipProvider>
-          <Tooltip>
-            <TooltipTrigger className="line-clamp-1">
-              <p className="line-clamp-1 text-left">{habit.label}</p>
-            </TooltipTrigger>
-            <TooltipContent className="bg-zinc-800 text-zinc-50">
-              {habit.label}
-            </TooltipContent>
-          </Tooltip>
-        </TooltipProvider>
+        <TextTooltip text={habit.label} className="font-medium text-zinc-100" />
         <HabitDropdown habit={habit} />
       </div>
       <div className="flex justify-between">

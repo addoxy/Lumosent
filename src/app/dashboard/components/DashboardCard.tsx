@@ -4,6 +4,7 @@ import {
   GoldIcon,
   HeartIcon,
 } from '../../../components/Icons';
+import TextTooltip from '@/components/TextTooltip';
 import {
   Card,
   CardContent,
@@ -39,20 +40,9 @@ const DashboardCard = (props: DashboardCardProps) => {
           {icon === 'heart' && <HeartIcon className="size-2.5" />}
         </div>
       </CardHeader>
-      <TooltipProvider>
-        <CardContent className="mb-1">
-          <Tooltip>
-            <TooltipTrigger>
-              <p className="line-clamp-1 text-left text-3xl text-zinc-50">
-                {data}
-              </p>
-            </TooltipTrigger>
-            <TooltipContent className="bg-zinc-800 text-zinc-50">
-              {data}
-            </TooltipContent>
-          </Tooltip>
-        </CardContent>
-      </TooltipProvider>
+      <CardContent className="mb-1">
+        <TextTooltip text={data} className="text-3xl text-zinc-50" />
+      </CardContent>
       <CardFooter className="text-xs text-zinc-400">{footer}</CardFooter>
     </Card>
   );
