@@ -39,7 +39,7 @@ const StarterKit = (props: KitProps) => {
 
   return (
     <Accordion type="single" collapsible>
-      <AccordionItem value={name} className="border-b-zinc-600 pb-2">
+      <AccordionItem value={name} className="border-b-zinc-800 pb-2">
         <AccordionTrigger className="text-zinc-200">{name}</AccordionTrigger>
         <AccordionContent className="text-zinc-300">
           <div className="flex flex-col">
