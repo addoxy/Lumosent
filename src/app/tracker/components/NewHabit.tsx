@@ -70,7 +70,7 @@ const NewHabit = () => {
       <DialogContent className="w-[96%] rounded-lg border-zinc-900 bg-zinc-950">
         <form action={handleSubmit}>
           <DialogHeader className="mb-4">
-            <DialogTitle className="text-base font-medium text-zinc-500">
+            <DialogTitle className="text-left text-base font-medium text-zinc-500">
               Habit name
             </DialogTitle>
           </DialogHeader>
