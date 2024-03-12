@@ -5,7 +5,7 @@ const page = async () => {
   const starterKits = await getKits();
 
   return (
-    <div className="mx-auto grid w-[640px] grid-cols-1 gap-6">
+    <div className="mx-auto grid w-full grid-cols-1 gap-6 md:w-[640px]">
       {starterKits?.map((kit) => <StarterKit key={kit.id} {...kit} />)}
     </div>
   );
