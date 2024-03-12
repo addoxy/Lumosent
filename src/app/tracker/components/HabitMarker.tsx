@@ -50,9 +50,9 @@ const HabitMarker = (props: HabitMarkerProps) => {
         onPressedChange={handleToggle}
         className={cn(
           'size-10 rounded-full font-medium',
-          completed && 'bg-green-500 font-semibold text-zinc-800',
           !completed && 'bg-zinc-800 text-zinc-200',
-          view === 'grid' && 'bg-zinc-700'
+          view === 'grid' && !completed && 'bg-zinc-700',
+          completed && 'bg-green-500 font-semibold text-zinc-800'
         )}
         disabled={isPending}
       >
