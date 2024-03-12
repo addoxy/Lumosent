@@ -18,7 +18,7 @@ const GridView = ({ habits }: { habits: Habit[] }) => {
         <Card
           key={habit.id}
           className={cn(
-            'flex flex-col border-zinc-800 bg-zinc-900 px-6 pb-6 pt-5 sm:px-8 sm:pb-8 sm:pt-7',
+            'flex flex-col border-none bg-zinc-900 px-6 pb-6 pt-5 sm:px-8 sm:pb-8 sm:pt-7',
             view !== 'grid' && 'hidden'
           )}
         >

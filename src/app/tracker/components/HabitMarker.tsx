@@ -2,6 +2,7 @@
 
 import { addLog, removeLog } from '@/app/actions/toggle-habit';
 import { Toggle } from '@/components/vendor/toggle';
+import { useView } from '@/lib/hooks/use-view';
 import { cn, formatDate } from '@/utils/utils';
 import { getDayFromDate } from '@/utils/utils';
 import { parseISO } from 'date-fns';
@@ -19,6 +20,7 @@ type HabitMarkerProps = {
 const HabitMarker = (props: HabitMarkerProps) => {
   const { date, showDay, dayAlign, completed, habitId } = props;
   const [isPending, startTransition] = useTransition();
+  const { view } = useView();
 
   const handleToggle = () => {
     startTransition(() => {
@@ -49,7 +51,8 @@ const HabitMarker = (props: HabitMarkerProps) => {
         className={cn(
           'size-10 rounded-full font-medium',
           completed && 'bg-green-500 font-semibold text-zinc-800',
-          !completed && 'bg-zinc-800 text-zinc-200'
+          !completed && 'bg-zinc-800 text-zinc-200',
+          view === 'grid' && 'bg-zinc-700'
         )}
         disabled={isPending}
       >
