@@ -14,13 +14,13 @@ const ColumnView = ({ habits }: { habits: Habit[] }) => {
   return (
     <div
       className={cn(
-        'mx-auto flex flex-col gap-y-10 sm:w-2/3 lg:w-1/2',
+        'mx-auto flex max-w-screen-md flex-col gap-y-10 divide-y divide-zinc-900 sm:w-2/3 lg:w-1/2',
         view !== 'mobile' && 'hidden',
         view === 'table' && 'flex flex-col md:hidden'
       )}
     >
       {habits.map((habit) => (
-        <div key={habit.id} className="flex flex-col">
+        <div key={habit.id} className="flex flex-col pt-10 first-of-type:pt-0">
           <div className="mb-6 flex justify-between">
             <TextTooltip
               text={habit.label}
