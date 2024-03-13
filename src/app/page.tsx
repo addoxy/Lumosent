@@ -37,12 +37,12 @@ export default function Home() {
           </Link>
         </nav>
       </header>
-      <section className="mt-32 flex flex-col items-center justify-between lg:flex-row">
+      <section className="mt-20 flex flex-col items-center justify-between sm:mt-32 lg:flex-row">
         <div className="flex max-w-lg flex-col">
-          <h1 className="mb-6 text-center text-5xl font-medium text-zinc-200 lg:text-left">
+          <h1 className="mb-6 text-center text-3xl font-medium text-zinc-200 sm:text-5xl lg:text-left">
             The Habit Tracker to Level Up Your Life
           </h1>
-          <p className="mb-12 text-center text-lg text-zinc-300 lg:text-left">
+          <p className="mb-12 text-center text-base text-zinc-300 sm:text-lg lg:text-left">
             Experience effortless habit tracking like never before with
             Lumosent. See detailed statistics to figure out where you are
             lacking and take action easily.
@@ -61,37 +61,37 @@ export default function Home() {
         </div>
         <HeroImage />
       </section>
-      <section className="mt-44 flex items-center justify-between gap-4">
-        <EasyLoggingImage />
+      <section className="mt-24 flex flex-col items-center justify-between gap-4 sm:mt-44 lg:flex-row">
+        <EasyLoggingImage className="order-4 lg:order-none" />
         <div className="flex max-w-lg flex-col">
-          <CheckIcon className="mb-6 size-10 text-zinc-200" />
-          <h2 className="mb-6 text-4xl font-medium text-zinc-200">
+          <CheckIcon className="order-1 mb-6 size-6 text-zinc-200 sm:size-10 lg:order-none" />
+          <h2 className="order-2 mb-6 text-2xl font-medium text-zinc-200 sm:text-4xl lg:order-none">
             Habit Logging Made Easy
           </h2>
-          <p className="mb-12 text-lg text-zinc-300">
+          <p className="order-3 mb-12 text-base text-zinc-300 sm:text-lg lg:order-none">
             Effortlessly and efficiently log entries by tapping just once -
             start building better habits today
           </p>
         </div>
       </section>
-      <section className="mt-44 flex items-center justify-between gap-4">
+      <section className="mt-24 flex flex-col items-center justify-between gap-4 sm:mt-44 lg:flex-row">
         <div className="flex max-w-lg flex-col">
           <GraphIcon className="mb-6 size-10 text-zinc-200" />
-          <h2 className="mb-6 text-4xl font-medium text-zinc-200">
+          <h2 className="mb-6 text-2xl font-medium text-zinc-200 sm:text-4xl">
             Detailed statistics
           </h2>
-          <p className="mb-12 text-lg text-zinc-300">
+          <p className="mb-12 text-base text-zinc-300 sm:text-lg">
             Get in-depth statistics to pinpoint strengths, address challenges,
             and notice patterns – for transformative results
           </p>
         </div>
         <StatisticsImage />
       </section>
-      <section className="mx-auto w-8/12">
-        <h2 className="mb-10 mt-52 text-center text-4xl font-medium text-zinc-200">
+      <section className="mx-auto mt-28 w-8/12 sm:mt-52">
+        <h2 className="mb-10 text-center text-2xl font-medium text-zinc-200 sm:text-4xl">
           Even more features
         </h2>
-        <div className="grid grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-2">
           <FeatureCard
             title="Starter kits"
             content="Make use of a vast collection of ready-made kits tailored to your needs"
@@ -104,7 +104,7 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="bg-zinc-925 mx-auto mt-44 grid place-items-center rounded-lg border border-zinc-800 px-32 py-10">
+      <section className="bg-zinc-925 mx-auto mt-24 grid place-items-center rounded-lg border border-zinc-800 px-32 py-10 sm:mt-44">
         <h3 className="mb-3 text-center text-2xl font-medium text-zinc-300 sm:text-3xl">
           Get Lumosent today
         </h3>
@@ -117,7 +117,7 @@ export default function Home() {
           </button>
         </Link>
       </section>
-      <footer className="mt-44 grid place-items-center border-t border-t-zinc-900 pt-10">
+      <footer className="mt-24 grid place-items-center border-t border-t-zinc-900 pt-10 sm:mt-44">
         <Link href="/" className="mb-3 flex items-center text-center">
           <Logo className="mr-3 h-5 w-5 stroke-zinc-300 text-zinc-950 hover:text-zinc-900" />
           <span className="text-zinc-200">Lumosent</span>

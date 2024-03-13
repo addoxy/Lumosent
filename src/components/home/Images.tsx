@@ -1,7 +1,7 @@
 import { Graph } from '../Icons';
 import HabitToggle from './HabitToggle';
 import HeroCard from './HeroCard';
-import { getDatesFromPastWeek } from '@/utils/utils';
+import { cn, getDatesFromPastWeek } from '@/utils/utils';
 
 export const HeroImage = () => {
   const datesFromPastWeek = getDatesFromPastWeek();
@@ -25,11 +25,16 @@ export const HeroImage = () => {
   );
 };
 
-export const EasyLoggingImage = () => {
+export const EasyLoggingImage = ({ className }: { className: string }) => {
   const datesFromPastWeek = getDatesFromPastWeek();
 
   return (
-    <div className="flex flex-col gap-y-5 rounded-xl bg-zinc-900 px-5 py-12">
+    <div
+      className={cn(
+        'flex flex-col gap-y-5 rounded-xl bg-zinc-900 px-5 py-12',
+        className
+      )}
+    >
       <div className="flex flex-col rounded-lg bg-zinc-800 p-6">
         <h3 className="mb-2 text-base font-medium text-zinc-200">Reading</h3>
         <div className="flex gap-x-5">
