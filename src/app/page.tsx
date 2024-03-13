@@ -99,7 +99,7 @@ export default function Home() {
           />
           <FeatureCard
             title="Customization"
-            content="Making it your own by choosing between the different views and themes"
+            content="Make it your own by choosing between different views and themes"
             FeatureIcon={<CustomizeIcon className="size-6" />}
           />
         </div>
