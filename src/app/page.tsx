@@ -1,11 +1,17 @@
 'use client';
 
-import { GraphIcon, Logo } from '@/components/Icons';
-import { CheckIcon } from '@/components/Icons';
+import {
+  CheckIcon,
+  CustomizeIcon,
+  GraphIcon,
+  KitIcon,
+  Logo,
+} from '@/components/Icons';
+import FeatureCard from '@/components/home/FeatureCard';
 import {
   EasyLoggingImage,
-  StatisticsImage,
   HeroImage,
+  StatisticsImage,
 } from '@/components/home/Images';
 import { Button } from '@/components/vendor/button';
 import { useSession } from 'next-auth/react';
@@ -55,9 +61,9 @@ export default function Home() {
         <EasyLoggingImage />
         <div className="flex max-w-lg flex-col">
           <CheckIcon className="mb-6 size-10 text-zinc-200" />
-          <h1 className="mb-6 text-4xl font-medium text-zinc-200">
+          <h2 className="mb-6 text-4xl font-medium text-zinc-200">
             Habit Logging Made Easy
-          </h1>
+          </h2>
           <p className="mb-12 text-lg text-zinc-300">
             Effortlessly and efficiently log entries by tapping just once -
             start building better habits today
@@ -67,15 +73,45 @@ export default function Home() {
       <section className="mt-44 flex items-center justify-between gap-4">
         <div className="flex max-w-lg flex-col">
           <GraphIcon className="mb-6 size-10 text-zinc-200" />
-          <h1 className="mb-6 text-4xl font-medium text-zinc-200">
+          <h2 className="mb-6 text-4xl font-medium text-zinc-200">
             Detailed statistics
-          </h1>
+          </h2>
           <p className="mb-12 text-lg text-zinc-300">
             Get in-depth statistics to pinpoint strengths, address challenges,
             and notice patterns – for transformative results
           </p>
         </div>
         <StatisticsImage />
+      </section>
+      <section className="mx-auto w-8/12">
+        <h2 className="mb-10 mt-52 text-center text-4xl font-medium text-zinc-200">
+          Even more features
+        </h2>
+        <div className="grid grid-cols-2 gap-6">
+          <FeatureCard
+            title="Starter kits"
+            content="Make use of a vast collection of ready-made kits tailored to your needs"
+            FeatureIcon={<KitIcon className="size-6" />}
+          />
+          <FeatureCard
+            title="Customization"
+            content="Making it your own by choosing between the different views and themes"
+            FeatureIcon={<CustomizeIcon className="size-6" />}
+          />
+        </div>
+      </section>
+      <section className="bg-zinc-925 mx-auto mt-44 grid place-items-center rounded-lg border border-zinc-800 px-32 py-10">
+        <h3 className="mb-3 text-center text-2xl font-medium text-zinc-300 sm:text-3xl">
+          Get Lumosent today
+        </h3>
+        <p className="mb-10 text-center leading-6 text-zinc-400">
+          and level up your life
+        </p>
+        <Link href="/sign-in">
+          <button className="h-11 w-44 shrink-0 rounded-lg bg-green-500 font-semibold text-zinc-800 transition-all delay-100 duration-200 ease-in-out hover:bg-green-600 disabled:cursor-not-allowed disabled:opacity-50">
+            {session ? 'App' : 'Get started'}
+          </button>
+        </Link>
       </section>
     </main>
   );
