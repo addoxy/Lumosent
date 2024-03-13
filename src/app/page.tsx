@@ -22,17 +22,21 @@ export default function Home() {
 
   return (
     <main className="flex flex-col">
-      <nav className="flex items-center justify-between">
-        <Link href="/" className="flex items-center gap-x-3">
-          <Logo className="size-7 stroke-zinc-300 text-zinc-950 hover:text-zinc-900" />
-          <span className="text-xl font-semibold text-zinc-100">Lumosent</span>
-        </Link>
-        <Link href="/sign-in">
-          <Button className="bg-zinc-200 font-medium text-zinc-800 hover:bg-zinc-400">
-            {session ? 'App' : 'Sign in'}
-          </Button>
-        </Link>
-      </nav>
+      <header>
+        <nav className="flex items-center justify-between">
+          <Link href="/" className="flex items-center gap-x-3">
+            <Logo className="size-7 stroke-zinc-300 text-zinc-950 hover:text-zinc-900" />
+            <span className="text-xl font-semibold text-zinc-100">
+              Lumosent
+            </span>
+          </Link>
+          <Link href="/sign-in">
+            <Button className="bg-zinc-200 font-medium text-zinc-800 hover:bg-zinc-400">
+              {session ? 'App' : 'Sign in'}
+            </Button>
+          </Link>
+        </nav>
+      </header>
       <section className="mt-32 flex items-center justify-between">
         <div className="flex max-w-lg flex-col">
           <h1 className="mb-6 text-5xl font-medium text-zinc-200">
@@ -113,6 +117,15 @@ export default function Home() {
           </button>
         </Link>
       </section>
+      <footer className="mt-44 grid place-items-center border-t border-t-zinc-900 pt-10">
+        <Link href="/" className="mb-3 flex items-center text-center">
+          <Logo className="mr-3 h-5 w-5 stroke-zinc-300 text-zinc-950 hover:text-zinc-900" />
+          <span className="text-zinc-200">Lumosent</span>
+        </Link>
+        <p className="text-center text-zinc-500">
+          © 2024 Addoxy. All rights reserved.
+        </p>
+      </footer>
     </main>
   );
 }
