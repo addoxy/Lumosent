@@ -12,7 +12,7 @@ A habit tracker that offers effortless habit tracking, detailed statistics to fi
 - Full mobile and desktop support
 
 ## Tech Stack
-- Next 14
+- Next.js 14
 - Tailwind CSS
 - Prisma
 - NextAuth
