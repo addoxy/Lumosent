@@ -13,7 +13,6 @@ export async function middleware(request: NextRequest) {
   });
 
   if (path === '/sign-in' && signInToken) {
-    console.log(signInToken);
     url.pathname = '/tracker';
     return NextResponse.redirect(url.href);
   }
