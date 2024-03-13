@@ -1,7 +1,12 @@
 'use client';
 
-import HeroImage from '@/components/HeroImage';
-import { Logo } from '@/components/Icons';
+import { GraphIcon, Logo } from '@/components/Icons';
+import { CheckIcon } from '@/components/Icons';
+import {
+  EasyLoggingImage,
+  StatisticsImage,
+  HeroImage,
+} from '@/components/home/Images';
 import { Button } from '@/components/vendor/button';
 import { useSession } from 'next-auth/react';
 import Link from 'next/link';
@@ -22,8 +27,8 @@ export default function Home() {
           </Button>
         </Link>
       </nav>
-      <section className="mt-32 flex items-center gap-x-48">
-        <div className="flex flex-col">
+      <section className="mt-32 flex items-center justify-between">
+        <div className="flex max-w-lg flex-col">
           <h1 className="mb-6 text-5xl font-medium text-zinc-200">
             The Habit Tracker to Level Up Your Life
           </h1>
@@ -45,6 +50,32 @@ export default function Home() {
           </div>
         </div>
         <HeroImage />
+      </section>
+      <section className="mt-44 flex items-center justify-between gap-4">
+        <EasyLoggingImage />
+        <div className="flex max-w-lg flex-col">
+          <CheckIcon className="mb-6 size-10 text-zinc-200" />
+          <h1 className="mb-6 text-4xl font-medium text-zinc-200">
+            Habit Logging Made Easy
+          </h1>
+          <p className="mb-12 text-lg text-zinc-300">
+            Effortlessly and efficiently log entries by tapping just once -
+            start building better habits today
+          </p>
+        </div>
+      </section>
+      <section className="mt-44 flex items-center justify-between gap-4">
+        <div className="flex max-w-lg flex-col">
+          <GraphIcon className="mb-6 size-10 text-zinc-200" />
+          <h1 className="mb-6 text-4xl font-medium text-zinc-200">
+            Detailed statistics
+          </h1>
+          <p className="mb-12 text-lg text-zinc-300">
+            Get in-depth statistics to pinpoint strengths, address challenges,
+            and notice patterns – for transformative results
+          </p>
+        </div>
+        <StatisticsImage />
       </section>
     </main>
   );
