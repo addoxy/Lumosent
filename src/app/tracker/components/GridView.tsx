@@ -31,7 +31,7 @@ const GridView = ({ habits }: { habits: Habit[] }) => {
               <HabitDropdown habit={habit} />
             </div>
           </CardHeader>
-          <CardContent className="flex justify-between">
+          <CardContent className="flex flex-wrap justify-between">
             {datesFromPastWeek.map((date, i) => (
               <HabitMarker
                 date={date}
