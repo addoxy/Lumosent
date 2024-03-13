@@ -61,7 +61,7 @@ export default function Home() {
         </div>
         <HeroImage />
       </section>
-      <section className="mt-24 flex flex-col items-center justify-between gap-4 sm:mt-44 lg:flex-row">
+      <section className="mt-14 flex flex-col items-center justify-between gap-4 sm:mt-44 lg:flex-row">
         <EasyLoggingImage className="order-4 lg:order-none" />
         <div className="flex max-w-lg flex-col">
           <CheckIcon className="order-1 mb-6 size-6 text-zinc-200 sm:size-10 lg:order-none" />
@@ -87,7 +87,7 @@ export default function Home() {
         </div>
         <StatisticsImage />
       </section>
-      <section className="mx-auto mt-28 w-8/12 sm:mt-52">
+      <section className="mx-auto mt-28 w-full sm:mt-52 sm:w-8/12">
         <h2 className="mb-10 text-center text-2xl font-medium text-zinc-200 sm:text-4xl">
           Even more features
         </h2>
@@ -104,7 +104,7 @@ export default function Home() {
           />
         </div>
       </section>
-      <section className="bg-zinc-925 mx-auto mt-24 grid place-items-center rounded-lg border border-zinc-800 px-32 py-10 sm:mt-44">
+      <section className="bg-zinc-925 mx-auto mt-24 grid w-full place-items-center rounded-lg border border-zinc-800 py-10 sm:mt-44 sm:w-fit sm:px-32">
         <h3 className="mb-3 text-center text-2xl font-medium text-zinc-300 sm:text-3xl">
           Get Lumosent today
         </h3>

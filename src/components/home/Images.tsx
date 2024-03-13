@@ -7,7 +7,7 @@ export const HeroImage = () => {
   const datesFromPastWeek = getDatesFromPastWeek();
 
   return (
-    <div className="flex flex-col items-center">
+    <div className="hidden items-center sm:flex sm:flex-col">
       <div className="flex items-center gap-x-5 rounded-xl bg-zinc-800 px-8 py-6 shadow-lg">
         {datesFromPastWeek.map((date, i) => (
           <HabitToggle date={date} key={i} />
@@ -31,13 +31,13 @@ export const EasyLoggingImage = ({ className }: { className: string }) => {
   return (
     <div
       className={cn(
-        'flex flex-col gap-y-5 rounded-xl bg-zinc-900 px-5 py-12',
+        'flex w-full flex-col gap-y-5 rounded-xl bg-zinc-900 px-5 py-12 sm:w-fit',
         className
       )}
     >
       <div className="flex flex-col rounded-lg bg-zinc-800 p-6">
         <h3 className="mb-2 text-base font-medium text-zinc-200">Reading</h3>
-        <div className="flex gap-x-5">
+        <div className="flex flex-wrap gap-5">
           {datesFromPastWeek.map((date) => (
             <HabitToggle date={date} key={date} />
           ))}
@@ -45,7 +45,7 @@ export const EasyLoggingImage = ({ className }: { className: string }) => {
       </div>
       <div className="flex flex-col rounded-lg bg-zinc-800 p-6">
         <h3 className="mb-2 text-base font-medium text-zinc-200">Meditation</h3>
-        <div className="flex gap-x-5">
+        <div className="flex flex-wrap gap-5">
           {datesFromPastWeek.map((date) => (
             <HabitToggle date={date} key={date} />
           ))}
