@@ -73,7 +73,10 @@ const SettingsPage = () => {
         <p className="mb-4 text-zinc-400">Choose your preferred theme</p>
         <div className="flex items-center justify-between">
           <span className="text-zinc-400">Dark Mode</span>
-          <Switch className="bg-zinc-900 data-[state=checked]:bg-zinc-200" />
+          <Switch
+            checked={true}
+            className="bg-zinc-900 data-[state=checked]:bg-zinc-200"
+          />
         </div>
       </section>
     </div>
