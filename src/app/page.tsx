@@ -37,17 +37,17 @@ export default function Home() {
           </Link>
         </nav>
       </header>
-      <section className="mt-32 flex items-center justify-between">
+      <section className="mt-32 flex flex-col items-center justify-between lg:flex-row">
         <div className="flex max-w-lg flex-col">
-          <h1 className="mb-6 text-5xl font-medium text-zinc-200">
+          <h1 className="mb-6 text-center text-5xl font-medium text-zinc-200 lg:text-left">
             The Habit Tracker to Level Up Your Life
           </h1>
-          <p className="mb-12 text-lg text-zinc-300">
+          <p className="mb-12 text-center text-lg text-zinc-300 lg:text-left">
             Experience effortless habit tracking like never before with
             Lumosent. See detailed statistics to figure out where you are
             lacking and take action easily.
           </p>
-          <div className="group relative w-96">
+          <div className="group relative mx-auto mb-16 w-96 lg:mx-0 lg:mb-0">
             <div className="absolute -inset-0.5 rounded-lg bg-gradient-to-r from-green-500 to-cyan-500 opacity-80 blur transition duration-1000 group-hover:opacity-100 group-hover:blur-md group-hover:duration-200" />
             <Link href="/sign-in">
               <Button

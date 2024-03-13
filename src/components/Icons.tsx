@@ -406,7 +406,7 @@ export const Graph = (props: IconProps) => {
         x2="120"
         y2="140.5"
         stroke="#22C55E"
-        stroke-width="3"
+        strokeWidth="3"
       />
       <line
         x1="120.334"
@@ -414,7 +414,7 @@ export const Graph = (props: IconProps) => {
         x2="28.3338"
         y2="161.462"
         stroke="#22C55E"
-        stroke-width="3"
+        strokeWidth="3"
       />
     </svg>
   );
