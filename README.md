@@ -10,3 +10,10 @@ A habit tracker that offers effortless habit tracking, detailed statistics to fi
 - Customization: Make it your own by choosing between different views and themes
 - Secure authentication using OAuth (Google, Github & Discord)
 - Full mobile and desktop support
+
+## Tech Stack
+- Next 14
+- Tailwind CSS
+- Prisma
+- NextAuth
+- Shadcn and more
