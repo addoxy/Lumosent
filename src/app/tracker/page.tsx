@@ -2,6 +2,7 @@ import { getHabits } from '../actions/get-habits';
 import ColumnView from './components/ColumnView';
 import GridView from './components/GridView';
 import NewHabit from './components/NewHabit';
+import SwitchViews from './components/SwitchViews';
 import TableView from './components/TableView';
 
 const page = async () => {
@@ -9,7 +10,8 @@ const page = async () => {
 
   return (
     <div className="flex flex-col">
-      <div className="mb-5 mt-10 flex justify-end">
+      <div className="mb-12 mt-10 flex justify-between">
+        <SwitchViews />
         <NewHabit />
       </div>
       {!habits && (

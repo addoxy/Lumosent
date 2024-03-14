@@ -16,7 +16,7 @@ const SettingsPage = () => {
           Choose the type of view you want for your habits
         </p>
         <div className="grid grid-cols-1 place-items-center gap-y-6 sm:flex sm:gap-x-6 sm:gap-y-0">
-          <div className="flex flex-col">
+          <div className="hidden md:flex md:flex-col">
             <h3 className="mb-2 font-medium text-zinc-400">Table</h3>
             <Toggle
               pressed={view === 'table'}
