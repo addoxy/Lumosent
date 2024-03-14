@@ -6,7 +6,7 @@ import { useView } from '@/lib/hooks/use-view';
 import { cn, formatDate } from '@/utils/utils';
 import { getDayFromDate } from '@/utils/utils';
 import { parseISO } from 'date-fns';
-import { useTransition } from 'react';
+import { useTransition, useOptimistic } from 'react';
 import { toast } from 'sonner';
 
 type HabitMarkerProps = {
@@ -22,7 +22,11 @@ const HabitMarker = (props: HabitMarkerProps) => {
   const [isPending, startTransition] = useTransition();
   const { view } = useView();
 
+  const [optimisticCompleted, setOptimisticCompleted] =
+    useOptimistic(completed);
+
   const handleToggle = () => {
+    setOptimisticCompleted(!optimisticCompleted);
     startTransition(() => {
       if (!completed) {
         toast.promise(addLog(habitId, parseISO(date + 'T00:00:00Z')), {
@@ -44,13 +48,14 @@ const HabitMarker = (props: HabitMarkerProps) => {
         </span>
       )}
       <Toggle
-        pressed={completed}
+        pressed={optimisticCompleted}
         onPressedChange={handleToggle}
         className={cn(
           'size-10 rounded-full font-medium',
-          !completed && 'bg-zinc-800 text-zinc-200',
-          view === 'grid' && !completed && 'bg-zinc-700',
-          completed && 'bg-green-500 font-semibold text-zinc-800'
+          !optimisticCompleted && 'bg-zinc-800 text-zinc-200',
+          view === 'grid' && !optimisticCompleted && 'bg-zinc-700',
+          optimisticCompleted &&
+            'bg-green-500 font-semibold text-zinc-800 disabled:opacity-100'
         )}
         disabled={isPending}
       >
